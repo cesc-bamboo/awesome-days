@@ -10,7 +10,7 @@ import Foundation
 extension Date {
     func yearMonthDayString() -> String {
         let yearMonthDayFormatter = DateFormatter()
-        yearMonthDayFormatter.dateFormat = "yMMd"
+        yearMonthDayFormatter.dateFormat = "y-MM-d"
         return yearMonthDayFormatter.string(from: self)
     }
 }

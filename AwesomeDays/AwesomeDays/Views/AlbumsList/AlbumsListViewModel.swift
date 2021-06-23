@@ -32,7 +32,8 @@ class AlbumsListViewModel: ObservableObject {
                 self.userCollections = self.photosFetcher.userCollections
                 
                 // TEST!
-                self.photosSorter.sortBySpecialDays(photos: self.allPhotos)
+//                self.photosSorter.sortBySpecialDays(photos: self.allPhotos)
+                self.photosSorter.sortBySpecialLocations(photos: self.allPhotos)
             }
         }
     }
