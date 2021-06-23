@@ -1,0 +1,422 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CB1881D7268335AC00CE0DA9 /* PhotosFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1881D6268335AC00CE0DA9 /* PhotosFetcher.swift */; };
+		CB35C9FA268235F800FF7543 /* AwesomeDaysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB35C9F9268235F800FF7543 /* AwesomeDaysApp.swift */; };
+		CB35C9FE268235FE00FF7543 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB35C9FD268235FE00FF7543 /* Assets.xcassets */; };
+		CB35CA01268235FE00FF7543 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB35CA00268235FE00FF7543 /* Preview Assets.xcassets */; };
+		CB35CA0C2683146700FF7543 /* AlbumsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB35CA0B2683146700FF7543 /* AlbumsListView.swift */; };
+		CB35CA0E2683147E00FF7543 /* AlbumsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB35CA0D2683147E00FF7543 /* AlbumsListViewModel.swift */; };
+		CB35CA13268316CB00FF7543 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB35CA0F2683153200FF7543 /* SettingsViewModel.swift */; };
+		CB35CA14268316CB00FF7543 /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB35CA122683156000FF7543 /* HomeTabView.swift */; };
+		CB35CA15268316CB00FF7543 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB35CA102683153200FF7543 /* SettingsView.swift */; };
+		CB35CA16268316CB00FF7543 /* HomeTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB35CA112683156000FF7543 /* HomeTabViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CB1881D426832BAC00CE0DA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CB1881D6268335AC00CE0DA9 /* PhotosFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosFetcher.swift; sourceTree = "<group>"; };
+		CB35C9F6268235F800FF7543 /* AwesomeDays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AwesomeDays.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB35C9F9268235F800FF7543 /* AwesomeDaysApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeDaysApp.swift; sourceTree = "<group>"; };
+		CB35C9FD268235FE00FF7543 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CB35CA00268235FE00FF7543 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CB35CA0B2683146700FF7543 /* AlbumsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsListView.swift; sourceTree = "<group>"; };
+		CB35CA0D2683147E00FF7543 /* AlbumsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsListViewModel.swift; sourceTree = "<group>"; };
+		CB35CA0F2683153200FF7543 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		CB35CA102683153200FF7543 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		CB35CA112683156000FF7543 /* HomeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModel.swift; sourceTree = "<group>"; };
+		CB35CA122683156000FF7543 /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CB35C9F3268235F800FF7543 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CB1881D52683354800CE0DA9 /* PhotosUtils */ = {
+			isa = PBXGroup;
+			children = (
+				CB1881D6268335AC00CE0DA9 /* PhotosFetcher.swift */,
+			);
+			path = PhotosUtils;
+			sourceTree = "<group>";
+		};
+		CB35C9ED268235F700FF7543 = {
+			isa = PBXGroup;
+			children = (
+				CB35C9F8268235F800FF7543 /* AwesomeDays */,
+				CB35C9F7268235F800FF7543 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CB35C9F7268235F800FF7543 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CB35C9F6268235F800FF7543 /* AwesomeDays.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CB35C9F8268235F800FF7543 /* AwesomeDays */ = {
+			isa = PBXGroup;
+			children = (
+				CB1881D52683354800CE0DA9 /* PhotosUtils */,
+				CB1881D426832BAC00CE0DA9 /* Info.plist */,
+				CB35C9F9268235F800FF7543 /* AwesomeDaysApp.swift */,
+				CB35CA07268313CB00FF7543 /* Views */,
+				CB35C9FD268235FE00FF7543 /* Assets.xcassets */,
+				CB35C9FF268235FE00FF7543 /* Preview Content */,
+			);
+			path = AwesomeDays;
+			sourceTree = "<group>";
+		};
+		CB35C9FF268235FE00FF7543 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				CB35CA00268235FE00FF7543 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CB35CA07268313CB00FF7543 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CB35CA0A2683144400FF7543 /* HomeTab */,
+				CB35CA092683140700FF7543 /* Settings */,
+				CB35CA08268313DD00FF7543 /* AlbumsList */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CB35CA08268313DD00FF7543 /* AlbumsList */ = {
+			isa = PBXGroup;
+			children = (
+				CB35CA0B2683146700FF7543 /* AlbumsListView.swift */,
+				CB35CA0D2683147E00FF7543 /* AlbumsListViewModel.swift */,
+			);
+			path = AlbumsList;
+			sourceTree = "<group>";
+		};
+		CB35CA092683140700FF7543 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CB35CA102683153200FF7543 /* SettingsView.swift */,
+				CB35CA0F2683153200FF7543 /* SettingsViewModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		CB35CA0A2683144400FF7543 /* HomeTab */ = {
+			isa = PBXGroup;
+			children = (
+				CB35CA122683156000FF7543 /* HomeTabView.swift */,
+				CB35CA112683156000FF7543 /* HomeTabViewModel.swift */,
+			);
+			path = HomeTab;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CB35C9F5268235F800FF7543 /* AwesomeDays */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB35CA04268235FE00FF7543 /* Build configuration list for PBXNativeTarget "AwesomeDays" */;
+			buildPhases = (
+				CB35C9F2268235F800FF7543 /* Sources */,
+				CB35C9F3268235F800FF7543 /* Frameworks */,
+				CB35C9F4268235F800FF7543 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AwesomeDays;
+			productName = AwesomeDays;
+			productReference = CB35C9F6268235F800FF7543 /* AwesomeDays.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CB35C9EE268235F700FF7543 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					CB35C9F5268235F800FF7543 = {
+						CreatedOnToolsVersion = 13.0;
+					};
+				};
+			};
+			buildConfigurationList = CB35C9F1268235F700FF7543 /* Build configuration list for PBXProject "AwesomeDays" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CB35C9ED268235F700FF7543;
+			productRefGroup = CB35C9F7268235F800FF7543 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CB35C9F5268235F800FF7543 /* AwesomeDays */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CB35C9F4268235F800FF7543 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB35CA01268235FE00FF7543 /* Preview Assets.xcassets in Resources */,
+				CB35C9FE268235FE00FF7543 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CB35C9F2268235F800FF7543 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB35CA0E2683147E00FF7543 /* AlbumsListViewModel.swift in Sources */,
+				CB35CA0C2683146700FF7543 /* AlbumsListView.swift in Sources */,
+				CB35CA14268316CB00FF7543 /* HomeTabView.swift in Sources */,
+				CB35CA15268316CB00FF7543 /* SettingsView.swift in Sources */,
+				CB1881D7268335AC00CE0DA9 /* PhotosFetcher.swift in Sources */,
+				CB35C9FA268235F800FF7543 /* AwesomeDaysApp.swift in Sources */,
+				CB35CA13268316CB00FF7543 /* SettingsViewModel.swift in Sources */,
+				CB35CA16268316CB00FF7543 /* HomeTabViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CB35CA02268235FE00FF7543 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CB35CA03268235FE00FF7543 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CB35CA05268235FE00FF7543 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AwesomeDays/Preview Content\"";
+				DEVELOPMENT_TEAM = 5ZKVP4LHLY;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AwesomeDays/Info.plist;
+				INFOPLIST_KEY_CFBundleExecutable = AwesomeDays;
+				INFOPLIST_KEY_CFBundleName = AwesomeDays;
+				INFOPLIST_KEY_CFBundleVersion = 1;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cescdev.AwesomeDays;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CB35CA06268235FE00FF7543 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AwesomeDays/Preview Content\"";
+				DEVELOPMENT_TEAM = 5ZKVP4LHLY;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AwesomeDays/Info.plist;
+				INFOPLIST_KEY_CFBundleExecutable = AwesomeDays;
+				INFOPLIST_KEY_CFBundleName = AwesomeDays;
+				INFOPLIST_KEY_CFBundleVersion = 1;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cescdev.AwesomeDays;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CB35C9F1268235F700FF7543 /* Build configuration list for PBXProject "AwesomeDays" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB35CA02268235FE00FF7543 /* Debug */,
+				CB35CA03268235FE00FF7543 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB35CA04268235FE00FF7543 /* Build configuration list for PBXNativeTarget "AwesomeDays" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB35CA05268235FE00FF7543 /* Debug */,
+				CB35CA06268235FE00FF7543 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CB35C9EE268235F700FF7543 /* Project object */;
+}
