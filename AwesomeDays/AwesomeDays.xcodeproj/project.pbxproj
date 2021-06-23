@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CB1881D7268335AC00CE0DA9 /* PhotosFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1881D6268335AC00CE0DA9 /* PhotosFetcher.swift */; };
+		CB1881D926833B6200CE0DA9 /* PhotosSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1881D826833B6200CE0DA9 /* PhotosSorter.swift */; };
+		CB1881DC26833DBE00CE0DA9 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1881DB26833DBE00CE0DA9 /* DateExtension.swift */; };
 		CB35C9FA268235F800FF7543 /* AwesomeDaysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB35C9F9268235F800FF7543 /* AwesomeDaysApp.swift */; };
 		CB35C9FE268235FE00FF7543 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB35C9FD268235FE00FF7543 /* Assets.xcassets */; };
 		CB35CA01268235FE00FF7543 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB35CA00268235FE00FF7543 /* Preview Assets.xcassets */; };
@@ -22,6 +24,8 @@
 /* Begin PBXFileReference section */
 		CB1881D426832BAC00CE0DA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CB1881D6268335AC00CE0DA9 /* PhotosFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosFetcher.swift; sourceTree = "<group>"; };
+		CB1881D826833B6200CE0DA9 /* PhotosSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosSorter.swift; sourceTree = "<group>"; };
+		CB1881DB26833DBE00CE0DA9 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		CB35C9F6268235F800FF7543 /* AwesomeDays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AwesomeDays.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB35C9F9268235F800FF7543 /* AwesomeDaysApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeDaysApp.swift; sourceTree = "<group>"; };
 		CB35C9FD268235FE00FF7543 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,8 +53,17 @@
 			isa = PBXGroup;
 			children = (
 				CB1881D6268335AC00CE0DA9 /* PhotosFetcher.swift */,
+				CB1881D826833B6200CE0DA9 /* PhotosSorter.swift */,
 			);
 			path = PhotosUtils;
+			sourceTree = "<group>";
+		};
+		CB1881DA26833DB000CE0DA9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CB1881DB26833DBE00CE0DA9 /* DateExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		CB35C9ED268235F700FF7543 = {
@@ -72,6 +85,7 @@
 		CB35C9F8268235F800FF7543 /* AwesomeDays */ = {
 			isa = PBXGroup;
 			children = (
+				CB1881DA26833DB000CE0DA9 /* Extensions */,
 				CB1881D52683354800CE0DA9 /* PhotosUtils */,
 				CB1881D426832BAC00CE0DA9 /* Info.plist */,
 				CB35C9F9268235F800FF7543 /* AwesomeDaysApp.swift */,
@@ -198,10 +212,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB35CA0E2683147E00FF7543 /* AlbumsListViewModel.swift in Sources */,
+				CB1881DC26833DBE00CE0DA9 /* DateExtension.swift in Sources */,
 				CB35CA0C2683146700FF7543 /* AlbumsListView.swift in Sources */,
 				CB35CA14268316CB00FF7543 /* HomeTabView.swift in Sources */,
 				CB35CA15268316CB00FF7543 /* SettingsView.swift in Sources */,
 				CB1881D7268335AC00CE0DA9 /* PhotosFetcher.swift in Sources */,
+				CB1881D926833B6200CE0DA9 /* PhotosSorter.swift in Sources */,
 				CB35C9FA268235F800FF7543 /* AwesomeDaysApp.swift in Sources */,
 				CB35CA13268316CB00FF7543 /* SettingsViewModel.swift in Sources */,
 				CB35CA16268316CB00FF7543 /* HomeTabViewModel.swift in Sources */,

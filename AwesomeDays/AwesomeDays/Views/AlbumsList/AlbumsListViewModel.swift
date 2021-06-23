@@ -10,22 +10,30 @@ import SwiftUI
 import Photos
 
 class AlbumsListViewModel: ObservableObject {
-    var photosFetcher: PhotosFetcher
+    private let photosFetcher: PhotosFetcher
+    private let photosSorter: PhotosSorter
+    
     @Published var allPhotos = PHFetchResult<PHAsset>()
     @Published var smartAlbums = PHFetchResult<PHAssetCollection>()
     @Published var userCollections = PHFetchResult<PHAssetCollection>()
     
-    init(photosFetcher: PhotosFetcher = PhotosFetcher()) {
+    init(photosFetcher: PhotosFetcher = PhotosFetcher(), photosSorter: PhotosSorter = PhotosSorter()) {
         self.photosFetcher = photosFetcher
+        self.photosSorter = photosSorter
     }
     
     func fetchPhotosAskingPermission() {
         photosFetcher.getPermissionIfNecessary { granted in
-          guard granted else { return }
+            guard granted else { return }
             self.photosFetcher.fetchAssets()
-            self.allPhotos = self.photosFetcher.allPhotos
-            self.smartAlbums = self.photosFetcher.smartAlbums
-            self.userCollections = self.photosFetcher.userCollections
+            DispatchQueue.main.async {
+                self.allPhotos = self.photosFetcher.allPhotos
+                self.smartAlbums = self.photosFetcher.smartAlbums
+                self.userCollections = self.photosFetcher.userCollections
+                
+                // TEST!
+                self.photosSorter.sortBySpecialDays(photos: self.allPhotos)
+            }
         }
     }
     
