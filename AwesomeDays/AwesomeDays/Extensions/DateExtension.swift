@@ -14,6 +14,12 @@ extension Date {
         return yearMonthDayFormatter.string(from: self)
     }
     
+    static func fromYearMonthDayString(stringDate: String) -> Date? {
+        let yearMonthDayFormatter = DateFormatter()
+        yearMonthDayFormatter.dateFormat = "y-MM-d"
+        return yearMonthDayFormatter.date(from: stringDate)
+    }
+    
     func isNearDay(date: Date, daysDistanceAllowed: Int = 1) -> Bool {
         let currentDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: self)
         let newDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)

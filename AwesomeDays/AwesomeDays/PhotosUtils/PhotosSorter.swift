@@ -16,8 +16,8 @@ class PhotosSorter {
     func sortBySpecialDays(photos: PHFetchResult<PHAsset>) -> [PhotosByDay] {
         var daysList: [PhotosByDay] = []
         photos.enumerateObjects { photo, index, _ in
-            if let date: Date = photo.creationDate {
-                if let byDay = daysList.first(where: { $0.date.yearMonthDayString() == date.yearMonthDayString() }) {
+            if let date: String = photo.creationDate?.yearMonthDayString() {
+                if let byDay = daysList.first(where: { $0.date == date }) {
                     byDay.add(photo: photo)
                 } else {
                     let newPhotosDay = PhotosByDay(date: date)
@@ -30,7 +30,7 @@ class PhotosSorter {
         let specialDays: [PhotosByDay] = daysList.filter { $0.count > isSpecialDayThreshold }
         
         specialDays.forEach{ byDay in
-            print("Special day found: \(byDay.date.yearMonthDayString()) => \(byDay.count)")
+            print("Special day found: \(byDay.date) => \(byDay.count)")
         }
         return specialDays
     }
@@ -83,6 +83,7 @@ class PhotosSorter {
                     trips.append(currentTrip)
                 }
                 currentTrip = PhotosByTrip()
+                currentTrip.add(photos: byDay)
             }
         }
         
@@ -99,15 +100,16 @@ class PhotosSorter {
 }
 
 class PhotosByDay: CustomStringConvertible {
-    var date: Date
+    // We could store a 'date: Date' here, but it's EXTREMELY slow to copy this struct. We're using a String instead and convert it when necessary.
+    var date: String
     var photos: [PHAsset] = []
     var count: Int { photos.count }
     
     var description: String {
-        return "Photos by Day \(date.yearMonthDayString()) => \(count)"
+        return "Photos by Day \(date) => \(count)"
     }
     
-    init(date: Date) {
+    init(date: String) {
         self.date = date
     }
     
@@ -160,8 +162,11 @@ class PhotosByTrip: CustomStringConvertible {
     func isInThisTrip(photos: PhotosByDay) -> Bool {
         if photosByDays.isEmpty { return true }
         
+        guard let photosDate = Date.fromYearMonthDayString(stringDate: photos.date) else { return false }
+        
         for byDay in photosByDays {
-            if byDay.date.isNearDay(date: photos.date, daysDistanceAllowed: 1) {
+            if let dayDate = Date.fromYearMonthDayString(stringDate: byDay.date),
+               dayDate.isNearDay(date: photosDate, daysDistanceAllowed: 1) {
                 return true
             }
         }

@@ -36,9 +36,9 @@ class AlbumsListViewModel: ObservableObject {
             
             
             // TEST!
-                self.photosSorter.sortBySpecialDays(photos: self.photosFetcher.allPhotos)
+//                self.photosSorter.sortBySpecialDays(photos: self.photosFetcher.allPhotos)
 //                self.photosSorter.sortBySpecialLocations(photos: self.photosFetcher.allPhotos)
-//            let _ = self.photosSorter.sortBySpecialTrips(photos: self.photosFetcher.allPhotos)
+            let _ = self.photosSorter.sortBySpecialTrips(photos: self.photosFetcher.allPhotos)
         }
     }
     
