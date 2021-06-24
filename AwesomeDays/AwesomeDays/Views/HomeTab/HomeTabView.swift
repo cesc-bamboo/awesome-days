@@ -14,7 +14,17 @@ struct HomeTabView: View {
         TabView {
             AlbumsListViewModel().instantiateView()
                 .tabItem {
-                    Label("Albums", systemImage: "photo.on.rectangle.angled")
+                    Label("Days", systemImage: "calendar")
+                }
+            
+            AlbumsListViewModel().instantiateView()
+                .tabItem {
+                    Label("Locations", systemImage: "mappin.and.ellipse")
+                }
+            
+            AlbumsListViewModel().instantiateView()
+                .tabItem {
+                    Label("Trips", systemImage: "airplane")
                 }
             
             SettingsViewModel().instantiateView()

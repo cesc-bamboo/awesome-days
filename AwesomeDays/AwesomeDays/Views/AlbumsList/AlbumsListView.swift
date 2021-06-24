@@ -6,15 +6,29 @@
 //
 
 import SwiftUI
+import Photos
 
 struct AlbumsListView: View {
     @StateObject var viewModel: AlbumsListViewModel
     
     var body: some View {
-        Text("All photos count: \(viewModel.allPhotos.count)")
-            .onAppear {
-                viewModel.fetchPhotosAskingPermission()
+        ScrollView {
+            LazyVGrid(columns: [GridItem()], spacing: 8) {
+                ForEach(viewModel.allPhotosBySpecialDays(), id: \.date) { specialDay in
+                    if let asset: PHAsset = specialDay.photos.first {
+                        RemoteImageView(withURL: asset, photosFetcher: viewModel.photosFetcher)
+                    } else {
+                        Image(systemName: "trash.fill")
+                    }
+                }
             }
+        }.onAppear {
+            viewModel.fetchPhotosAskingPermission()
+        }
+//        Text("All photos count: \(viewModel.allPhotos.count)")
+//            .onAppear {
+//                viewModel.fetchPhotosAskingPermission()
+//            }
     }
 }
 

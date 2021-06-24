@@ -9,8 +9,12 @@ import Foundation
 import SwiftUI
 import Photos
 
+enum SortType {
+    case SpecialDays, SpecialLocations, SpecialTrips
+}
+
 class AlbumsListViewModel: ObservableObject {
-    private let photosFetcher: PhotosFetcher
+    let photosFetcher: PhotosFetcher
     private let photosSorter: PhotosSorter
     
     @Published var allPhotos = PHFetchResult<PHAsset>()
@@ -32,14 +36,35 @@ class AlbumsListViewModel: ObservableObject {
                 self.smartAlbums = self.photosFetcher.smartAlbums
                 self.userCollections = self.photosFetcher.userCollections
             }
-            
-            
-            
-            // TEST!
-//                self.photosSorter.sortBySpecialDays(photos: self.photosFetcher.allPhotos)
-//                self.photosSorter.sortBySpecialLocations(photos: self.photosFetcher.allPhotos)
-            let _ = self.photosSorter.sortBySpecialTrips(photos: self.photosFetcher.allPhotos)
         }
+    }
+    
+    func allPhotosBySpecialDays() -> [PhotosByDay] {
+        return self.photosSorter.sortBySpecialDays(photos: self.photosFetcher.allPhotos)
+    }
+    
+    func allPhotosBySpecialLocations() -> [PhotosByLocation] {
+        return self.photosSorter.sortBySpecialLocations(photos: self.photosFetcher.allPhotos)
+    }
+    
+    func allPhotosBySpecialTrips() -> [PhotosByTrip] {
+        return self.photosSorter.sortBySpecialTrips(photos: self.photosFetcher.allPhotos)
+    }
+    
+//    func thumbnail(for asset: PHAsset?, completionHandler: @escaping (UIImage?) -> ()) {
+//        guard let asset = asset else {
+//            completionHandler(nil)
+//            return
+//        }
+//        photosFetcher.fetchImage(asset: asset, completionHandler: completionHandler)
+//    }
+    
+    func thumbnail(for asset: PHAsset?, completionHandler: @escaping (UIImage?) -> ()) {
+        guard let asset = asset else {
+            completionHandler(nil)
+            return
+        }
+        photosFetcher.fetchImage(asset: asset, completionHandler: completionHandler)
     }
     
     func instantiateView() -> some View {
