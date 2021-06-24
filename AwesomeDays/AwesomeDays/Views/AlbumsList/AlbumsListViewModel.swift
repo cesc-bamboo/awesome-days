@@ -26,15 +26,19 @@ class AlbumsListViewModel: ObservableObject {
         photosFetcher.getPermissionIfNecessary { granted in
             guard granted else { return }
             self.photosFetcher.fetchAssets()
+            
             DispatchQueue.main.async {
                 self.allPhotos = self.photosFetcher.allPhotos
                 self.smartAlbums = self.photosFetcher.smartAlbums
                 self.userCollections = self.photosFetcher.userCollections
-                
-                // TEST!
-//                self.photosSorter.sortBySpecialDays(photos: self.allPhotos)
-                self.photosSorter.sortBySpecialLocations(photos: self.allPhotos)
             }
+            
+            
+            
+            // TEST!
+                self.photosSorter.sortBySpecialDays(photos: self.photosFetcher.allPhotos)
+//                self.photosSorter.sortBySpecialLocations(photos: self.photosFetcher.allPhotos)
+//            let _ = self.photosSorter.sortBySpecialTrips(photos: self.photosFetcher.allPhotos)
         }
     }
     

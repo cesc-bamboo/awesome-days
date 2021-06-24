@@ -13,4 +13,25 @@ extension Date {
         yearMonthDayFormatter.dateFormat = "y-MM-d"
         return yearMonthDayFormatter.string(from: self)
     }
+    
+    func isNearDay(date: Date, daysDistanceAllowed: Int = 1) -> Bool {
+        let currentDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: self)
+        let newDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
+        
+        guard let currentDay = currentDateComponents.day, let newDay = newDateComponents.day else { return false }
+        
+        if currentDateComponents.year == newDateComponents.year
+            && currentDateComponents.month == newDateComponents.month {
+            let minDayAllowed = currentDay - daysDistanceAllowed
+            let maxDayAllowed = currentDay + daysDistanceAllowed
+            
+            if newDay >= minDayAllowed && newDay <= maxDayAllowed {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
 }

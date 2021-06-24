@@ -11,12 +11,13 @@ import Photos
 class PhotosSorter {
     private let isSpecialDayThreshold: Int = 4
     private let isSpecialLocationThreshold: Int = 10
+    private let isSpecialTripThreshold: Int = 2
     
-    func sortBySpecialDays(photos: PHFetchResult<PHAsset>) {
+    func sortBySpecialDays(photos: PHFetchResult<PHAsset>) -> [PhotosByDay] {
         var daysList: [PhotosByDay] = []
         photos.enumerateObjects { photo, index, _ in
-            if let date: String = photo.creationDate?.yearMonthDayString() {
-                if let byDay = daysList.first(where: { $0.date == date }) {
+            if let date: Date = photo.creationDate {
+                if let byDay = daysList.first(where: { $0.date.yearMonthDayString() == date.yearMonthDayString() }) {
                     byDay.add(photo: photo)
                 } else {
                     let newPhotosDay = PhotosByDay(date: date)
@@ -26,14 +27,15 @@ class PhotosSorter {
             }
         }
         
-        let specialDays = daysList.filter { $0.count > isSpecialDayThreshold }
+        let specialDays: [PhotosByDay] = daysList.filter { $0.count > isSpecialDayThreshold }
         
         specialDays.forEach{ byDay in
-            print("Special day found: \(byDay.date) => \(byDay.count)")
+            print("Special day found: \(byDay.date.yearMonthDayString()) => \(byDay.count)")
         }
+        return specialDays
     }
     
-    func sortBySpecialLocations(photos: PHFetchResult<PHAsset>) {
+    func sortBySpecialLocations(photos: PHFetchResult<PHAsset>) -> [PhotosByLocation] {
         var locationList: [PhotosByLocation] = []
         var photoAdded = false
         
@@ -54,7 +56,7 @@ class PhotosSorter {
             photoAdded = false
         }
         
-        let specialLocations = locationList.filter { $0.count > isSpecialLocationThreshold }
+        let specialLocations: [PhotosByLocation] = locationList.filter { $0.count > isSpecialLocationThreshold }
         
         specialLocations.forEach{ byLocation in
             if let firstLocation = byLocation.photos.first?.location?.coordinate {
@@ -63,26 +65,68 @@ class PhotosSorter {
                 print("Error: No first location found")
             }
         }
+        return specialLocations
+    }
+    
+    func sortBySpecialTrips(photos: PHFetchResult<PHAsset>) -> [PhotosByTrip] {
+        let specialDays = sortBySpecialDays(photos: photos)
+        let sortedDays = specialDays.sorted { $0.date < $1.date }
+        
+        var trips: [PhotosByTrip] = []
+        
+        var currentTrip = PhotosByTrip()
+        for byDay in sortedDays {
+            if currentTrip.isInThisTrip(photos: byDay) {
+                currentTrip.add(photos: byDay)
+            } else {
+                if currentTrip.count >= isSpecialTripThreshold {
+                    trips.append(currentTrip)
+                }
+                currentTrip = PhotosByTrip()
+            }
+        }
+        
+        if currentTrip.count >= isSpecialTripThreshold {
+            trips.append(currentTrip)
+        }
+        
+        trips.forEach{ trip in
+            print(trip.description)
+        }
+        
+        return trips
     }
 }
 
-class PhotosByDay {
-    var date: String
+class PhotosByDay: CustomStringConvertible {
+    var date: Date
     var photos: [PHAsset] = []
     var count: Int { photos.count }
     
-    init(date: String) {
+    var description: String {
+        return "Photos by Day \(date.yearMonthDayString()) => \(count)"
+    }
+    
+    init(date: Date) {
         self.date = date
     }
     
     func add(photo: PHAsset) { photos.append(photo) }
 }
 
-class PhotosByLocation {
+class PhotosByLocation: CustomStringConvertible {
     private let nearThreshold: CLLocationDistance = 10_000 // Distance in meters
     
     var photos: [PHAsset] = []
     var count: Int { photos.count }
+    
+    var description: String {
+        if let firstLocation = photos.first?.location?.coordinate {
+            return "Photos by Location near (lat,lon): \(firstLocation.latitude), \(firstLocation.longitude) => \(count)"
+        } else {
+            return "Error: first location not found"
+        }
+    }
     
     func isNear(photo: PHAsset) -> Bool {
         guard let photoLocation = photo.location else { return false }
@@ -99,4 +143,30 @@ class PhotosByLocation {
     }
     
     func add(photo: PHAsset) { photos.append(photo) }
+}
+
+class PhotosByTrip: CustomStringConvertible {
+    var photosByDays: [PhotosByDay] = []
+    var count: Int { photosByDays.count }
+    
+    var description: String {
+        var tripDesc: String = "Photos by Trip => \(count)"
+        for byDay in photosByDays {
+            tripDesc += "\n  # \(byDay.description)"
+        }
+        return tripDesc
+    }
+    
+    func isInThisTrip(photos: PhotosByDay) -> Bool {
+        if photosByDays.isEmpty { return true }
+        
+        for byDay in photosByDays {
+            if byDay.date.isNearDay(date: photos.date, daysDistanceAllowed: 1) {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func add(photos: PhotosByDay) { photosByDays.append(photos) }
 }
