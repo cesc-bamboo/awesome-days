@@ -13,12 +13,12 @@ import Photos
 
 class ImageLoader: ObservableObject {
     @Published var image: UIImage?
-    var urlString: PHAsset
+    var asset: PHAsset
     var photosFetcher: PhotosFetcher
     var imageCache = ImageCache.getImageCache()
 
-    init(urlString: PHAsset, photosFetcher: PhotosFetcher) {
-        self.urlString = urlString
+    init(asset: PHAsset, photosFetcher: PhotosFetcher) {
+        self.asset = asset
         self.photosFetcher = photosFetcher
         loadImage()
     }
@@ -34,7 +34,7 @@ class ImageLoader: ObservableObject {
     }
 
     func loadImageFromCache() -> Bool {
-        guard let cacheImage = imageCache.get(forKey: "\(urlString.hash)") else {
+        guard let cacheImage = imageCache.get(forKey: "\(asset.hash)") else {
             return false
         }
 
@@ -43,11 +43,7 @@ class ImageLoader: ObservableObject {
     }
 
     func loadImageFromUrl() {
-//        let url = URL(string: urlString)!
-//        let task = URLSession.shared.dataTask(with: url, completionHandler: getImageFromResponse(data:response:error:))
-//        task.resume()
-        
-        photosFetcher.fetchImage(asset: urlString, completionHandler: getImageFetched)
+        photosFetcher.fetchImage(asset: asset, completionHandler: getImageFetched)
     }
     
     func getImageFetched(image: UIImage?) {
@@ -57,7 +53,7 @@ class ImageLoader: ObservableObject {
         }
         
         DispatchQueue.main.async {
-            self.imageCache.set(forKey: "\(self.urlString.hash)", image: image)
+            self.imageCache.set(forKey: "\(self.asset.hash)", image: image)
             self.image = image
         }
     }

@@ -51,22 +51,6 @@ class AlbumsListViewModel: ObservableObject {
         return self.photosSorter.sortBySpecialTrips(photos: self.photosFetcher.allPhotos)
     }
     
-//    func thumbnail(for asset: PHAsset?, completionHandler: @escaping (UIImage?) -> ()) {
-//        guard let asset = asset else {
-//            completionHandler(nil)
-//            return
-//        }
-//        photosFetcher.fetchImage(asset: asset, completionHandler: completionHandler)
-//    }
-    
-    func thumbnail(for asset: PHAsset?, completionHandler: @escaping (UIImage?) -> ()) {
-        guard let asset = asset else {
-            completionHandler(nil)
-            return
-        }
-        photosFetcher.fetchImage(asset: asset, completionHandler: completionHandler)
-    }
-    
     func instantiateView() -> some View {
         AlbumsListView(viewModel: self)
     }

@@ -16,7 +16,12 @@ struct AlbumsListView: View {
             LazyVGrid(columns: [GridItem()], spacing: 8) {
                 ForEach(viewModel.allPhotosBySpecialDays(), id: \.date) { specialDay in
                     if let asset: PHAsset = specialDay.photos.first {
-                        RemoteImageView(withURL: asset, photosFetcher: viewModel.photosFetcher)
+                        VStack {
+                            Text(specialDay.description)
+                            RemoteImageView(with: asset, photosFetcher: viewModel.photosFetcher)
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 250)
+                        }
                     } else {
                         Image(systemName: "trash.fill")
                     }
@@ -25,10 +30,6 @@ struct AlbumsListView: View {
         }.onAppear {
             viewModel.fetchPhotosAskingPermission()
         }
-//        Text("All photos count: \(viewModel.allPhotos.count)")
-//            .onAppear {
-//                viewModel.fetchPhotosAskingPermission()
-//            }
     }
 }
 

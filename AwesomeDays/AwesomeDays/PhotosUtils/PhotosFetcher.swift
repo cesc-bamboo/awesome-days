@@ -63,8 +63,8 @@ class PhotosFetcher: NSObject {
         options.isSynchronous = false
         
         imageManager.requestImage(for: asset,
-                                     targetSize: CGSize(width: 160.0, height: 160.0),
-                                     contentMode: .aspectFill,
+                                     targetSize: CGSize(width: 512.0, height: 512.0),
+                                     contentMode: .aspectFit,
                                      options: options,
                                      resultHandler: { (image, info) in
             completionHandler(image)

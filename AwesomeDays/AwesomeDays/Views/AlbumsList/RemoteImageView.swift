@@ -14,8 +14,8 @@ import Photos
 struct RemoteImageView: View {
     @ObservedObject var imageLoader: ImageLoader
     
-    init(withURL url: PHAsset, photosFetcher: PhotosFetcher) {
-        imageLoader = ImageLoader(urlString: url, photosFetcher: photosFetcher)
+    init(with asset: PHAsset, photosFetcher: PhotosFetcher) {
+        imageLoader = ImageLoader(asset: asset, photosFetcher: photosFetcher)
     }
     
     var body: some View {
