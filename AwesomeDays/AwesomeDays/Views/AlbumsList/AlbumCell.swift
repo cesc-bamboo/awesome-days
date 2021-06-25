@@ -11,8 +11,6 @@ import Photos
 struct AlbumCell: View {
     @StateObject var viewModel: AlbumCellViewModel
     private let coverHeight: CGFloat = 250
-    private let gridHeight: CGFloat = 350
-    private let gridCellWidth: CGFloat = 250
     
     @State private var isAlbumExpanded: Bool = false
     
@@ -43,19 +41,18 @@ struct AlbumCell: View {
     }
     
     func photosGrid(with assets: [PHAsset]) -> some View {
+        let cellWidth: CGFloat = viewModel.parentViewSize.width * 0.9
+        let cellHeight: CGFloat = cellWidth * 0.75
         
-            ScrollView(.horizontal) {
-                
-                LazyHGrid(rows: [GridItem(.fixed(gridCellWidth))], spacing: 8) {
-                    
-                    ForEach(assets, id: \.hash) { asset in
-                        RemoteImageView(with: asset, photosFetcher: viewModel.photosFetcher)
-                            .aspectRatio(contentMode: .fill)
-//                            .frame(width: geometry.size.width * 0.8)
-//                            .frame(height: gridHeight)
-                    }
-                }.frame(height: gridHeight)
+        return ScrollView(.horizontal) {
+            LazyHGrid(rows: [GridItem(.flexible(minimum: cellWidth*0.5, maximum: cellWidth))], spacing: 8) {
+                ForEach(assets, id: \.hash) { asset in
+                    RemoteImageView(with: asset, photosFetcher: viewModel.photosFetcher)
+                        .aspectRatio(contentMode: .fit)
+                }
             }
+            .frame(height: cellHeight)
+        }
         
     }
     

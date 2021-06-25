@@ -12,16 +12,20 @@ struct AlbumsListView: View {
     @StateObject var viewModel: AlbumsListViewModel
     
     var body: some View {
+        GeometryReader { fullView in
         ScrollView {
             LazyVGrid(columns: [GridItem()], spacing: 8) {
                 ForEach(viewModel.allPhotosBySpecialDays(), id: \.date) { specialDay in
                     VStack {
                         Text(specialDay.description)
-                        AlbumCellViewModel(assets: specialDay.photos, photosFetcher: viewModel.photosFetcher)
+                        AlbumCellViewModel(assets: specialDay.photos,
+                                           photosFetcher: viewModel.photosFetcher,
+                                           parentViewSize: fullView.size)
                             .instantiateView()
                     }
                 }
             }
+        }
             
         }.onAppear {
             viewModel.fetchPhotosAskingPermission()
