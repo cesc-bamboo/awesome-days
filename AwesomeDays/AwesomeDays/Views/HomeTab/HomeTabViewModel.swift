@@ -21,11 +21,11 @@ enum HomeTabs: CaseIterable {
     var view: some View {
         switch self {
         case .days:
-            return AnyView(AlbumsListViewModel().instantiateView())
+            return AnyView(AlbumsListDaysViewModel().instantiateView())
         case .locations:
-            return AnyView(AlbumsListViewModel().instantiateView())
+            return AnyView(AlbumsListLocationsViewModel().instantiateView())
         case .trips:
-            return AnyView(AlbumsListViewModel().instantiateView())
+            return AnyView(AlbumsListDaysViewModel().instantiateView())
         case .settings:
             return AnyView(SettingsViewModel().instantiateView())
         }

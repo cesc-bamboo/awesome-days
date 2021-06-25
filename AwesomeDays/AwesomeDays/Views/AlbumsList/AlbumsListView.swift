@@ -8,17 +8,17 @@
 import SwiftUI
 import Photos
 
-struct AlbumsListView: View {
-    @StateObject var viewModel: AlbumsListViewModel
+struct AlbumsListView<ViewModel>: View where ViewModel: AlbumListViewModelProtocol {
+    @StateObject var viewModel: ViewModel
     
     var body: some View {
         GeometryReader { fullView in
             ScrollView {
                 LazyVGrid(columns: [GridItem()], spacing: 8) {
-                    ForEach(viewModel.allPhotosBySpecialDays(), id: \.date) { specialDay in
+                    ForEach(viewModel.photosToPresent()) { photosAlbum in
                         VStack {
-                            Text(specialDay.description)
-                            AlbumCellViewModel(assets: specialDay.photos,
+                            Text(photosAlbum.description)
+                            AlbumCellViewModel(assets: photosAlbum.photos,
                                                photosFetcher: viewModel.photosFetcher,
                                                parentViewSize: fullView.size)
                                 .instantiateView()
@@ -34,6 +34,6 @@ struct AlbumsListView: View {
 
 struct AlbumsListView_Previews: PreviewProvider {
     static var previews: some View {
-        AlbumsListViewModel().instantiateView()
+        AlbumsListDaysViewModel().instantiateView()
     }
 }

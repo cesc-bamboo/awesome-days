@@ -8,11 +8,12 @@
 import Foundation
 import Photos
 
-class PhotosByLocation: CustomStringConvertible {
+class PhotosByLocation: PhotosByProtocol {
     private let nearThreshold: CLLocationDistance = 10_000 // Distance in meters
     
     var photos: [PHAsset] = []
     var count: Int { photos.count }
+    var uuid: UUID = UUID()
     
     var description: String {
         if let firstLocation = photos.first?.location?.coordinate {

@@ -9,13 +9,17 @@ import Foundation
 import SwiftUI
 import Photos
 
-enum SortType {
-    case SpecialDays, SpecialLocations, SpecialTrips
+protocol AlbumListViewModelProtocol: ObservableObject {
+    associatedtype P: PhotosByProtocol
+    func photosToPresent() -> [P]
+    
+    var photosFetcher: PhotosFetcher { get }
+    func fetchPhotosAskingPermission()
 }
 
-class AlbumsListViewModel: ObservableObject {
+class AlbumsListViewModelDefault<PhotosByType: PhotosByProtocol>: AlbumListViewModelProtocol {
     let photosFetcher: PhotosFetcher
-    private let photosSorter: PhotosSorter
+    let photosSorter: PhotosSorter
     
     @Published var allPhotos = PHFetchResult<PHAsset>()
     @Published var smartAlbums = PHFetchResult<PHAssetCollection>()
@@ -39,17 +43,13 @@ class AlbumsListViewModel: ObservableObject {
         }
     }
     
-    func allPhotosBySpecialDays() -> [PhotosByDay] {
-        return self.photosSorter.sortBySpecialDays(photos: self.photosFetcher.allPhotos)
+    func photosToPresent() -> [PhotosByType] {
+        return []
     }
-    
-    func allPhotosBySpecialLocations() -> [PhotosByLocation] {
-        return self.photosSorter.sortBySpecialLocations(photos: self.photosFetcher.allPhotos)
-    }
-    
-    func allPhotosBySpecialTrips() -> [PhotosByTrip] {
-        return self.photosSorter.sortBySpecialTrips(photos: self.photosFetcher.allPhotos)
-    }
+//
+//    func allPhotosBySpecialTrips() -> [PhotosByTrip] {
+//        return self.photosSorter.sortBySpecialTrips(photos: self.photosFetcher.allPhotos)
+//    }
     
     func instantiateView() -> some View {
         AlbumsListView(viewModel: self)
