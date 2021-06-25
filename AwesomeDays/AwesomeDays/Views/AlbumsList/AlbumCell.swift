@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Photos
+import Introspect
 
 struct AlbumCell: View {
     @StateObject var viewModel: AlbumCellViewModel
@@ -52,7 +53,7 @@ struct AlbumCell: View {
                 }
             }
             .frame(height: cellHeight)
-        }
+        }.introspectScrollView { $0.alwaysBounceVertical = false }
         
     }
     
