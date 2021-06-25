@@ -20,12 +20,14 @@ protocol AlbumListViewModelProtocol: ObservableObject {
 class AlbumsListViewModelDefault<PhotosByType: PhotosByProtocol>: AlbumListViewModelProtocol {
     let photosFetcher: PhotosFetcher
     let photosSorter: PhotosSorter
+    var photosAlreadySorted: [PhotosByType]?
     
     @Published var allPhotos = PHFetchResult<PHAsset>()
     @Published var smartAlbums = PHFetchResult<PHAssetCollection>()
     @Published var userCollections = PHFetchResult<PHAssetCollection>()
     
-    init(photosFetcher: PhotosFetcher = PhotosFetcher(), photosSorter: PhotosSorter = PhotosSorter()) {
+    init(photosToPresent: [PhotosByType]? = nil, photosFetcher: PhotosFetcher = PhotosFetcher(), photosSorter: PhotosSorter = PhotosSorter()) {
+        self.photosAlreadySorted = photosToPresent
         self.photosFetcher = photosFetcher
         self.photosSorter = photosSorter
     }
@@ -44,7 +46,7 @@ class AlbumsListViewModelDefault<PhotosByType: PhotosByProtocol>: AlbumListViewM
     }
     
     func photosToPresent() -> [PhotosByType] {
-        return []
+        return photosAlreadySorted ?? []
     }
 //
 //    func allPhotosBySpecialTrips() -> [PhotosByTrip] {

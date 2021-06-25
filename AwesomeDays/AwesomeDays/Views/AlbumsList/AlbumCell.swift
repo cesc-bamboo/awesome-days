@@ -53,7 +53,8 @@ struct AlbumCell: View {
                 }
             }
             .frame(height: cellHeight)
-        }.introspectScrollView { $0.alwaysBounceVertical = false }
+            .introspectScrollView { $0.alwaysBounceVertical = false }
+        }
         
     }
     

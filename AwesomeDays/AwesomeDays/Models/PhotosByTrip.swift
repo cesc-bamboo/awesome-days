@@ -8,16 +8,24 @@
 import Foundation
 import Photos
 
-class PhotosByTrip: CustomStringConvertible {
+class PhotosByTrip: PhotosByProtocol {
+    var photos: [PHAsset] = []
+    
     var photosByDays: [PhotosByDay] = []
     var count: Int { photosByDays.count }
+    var uuid: UUID = UUID()
+    
+//    var photos: [PHAsset] {
+//        photosByDays.reduce([]) { partialResult, byDay in
+//            return partialResult + byDay.photos
+//        }
+//    }
     
     var description: String {
-        var tripDesc: String = "Photos by Trip => \(count)"
-        for byDay in photosByDays {
-            tripDesc += "\n  # \(byDay.description)"
-        }
-        return tripDesc
+        guard let firstDate = photosByDays.first?.date,
+              let lastDate = photosByDays.last?.date else { return "No dates" }
+        
+        return "\(firstDate) to \(lastDate)"
     }
     
     func isInThisTrip(photos: PhotosByDay) -> Bool {

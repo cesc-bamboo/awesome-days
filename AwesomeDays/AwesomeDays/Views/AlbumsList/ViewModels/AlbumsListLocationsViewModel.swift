@@ -11,6 +11,12 @@ import Photos
 
 class AlbumsListLocationsViewModel: AlbumsListViewModelDefault<PhotosByLocation> {
     override func photosToPresent() -> [PhotosByLocation] {
-        return self.photosSorter.sortBySpecialLocations(photos: self.photosFetcher.allPhotos)
+        if let photos = photosAlreadySorted {
+            return photos
+        } else {
+            let specialLocationPhotos = self.photosSorter.sortBySpecialLocations(photos: self.photosFetcher.allPhotos)
+            photosAlreadySorted = specialLocationPhotos.isEmpty ? nil : specialLocationPhotos
+            return specialLocationPhotos
+        }
     }
 }

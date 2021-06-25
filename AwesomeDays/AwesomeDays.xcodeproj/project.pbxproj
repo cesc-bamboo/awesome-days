@@ -31,6 +31,10 @@
 		CBF448652685FC65006C9ACF /* AlbumsListDaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF448622685FC65006C9ACF /* AlbumsListDaysViewModel.swift */; };
 		CBF448662685FC65006C9ACF /* AlbumsListLocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF448632685FC65006C9ACF /* AlbumsListLocationsViewModel.swift */; };
 		CBF448692686069C006C9ACF /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = CBF448682686069C006C9ACF /* Introspect */; };
+		CBF4486B26861A75006C9ACF /* AlbumsListTripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4486A26861A75006C9ACF /* AlbumsListTripsView.swift */; };
+		CBF4486D26861D23006C9ACF /* AlbumsListTripsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4486C26861D23006C9ACF /* AlbumsListTripsViewModel.swift */; };
+		CBF4486F268620AA006C9ACF /* AlbumTripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4486E268620AA006C9ACF /* AlbumTripCell.swift */; };
+		CBF448712686233D006C9ACF /* AlbumCellTripsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF448702686233D006C9ACF /* AlbumCellTripsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +63,10 @@
 		CBF448612685FC65006C9ACF /* AlbumsListViewModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsListViewModelProtocol.swift; sourceTree = "<group>"; };
 		CBF448622685FC65006C9ACF /* AlbumsListDaysViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsListDaysViewModel.swift; sourceTree = "<group>"; };
 		CBF448632685FC65006C9ACF /* AlbumsListLocationsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsListLocationsViewModel.swift; sourceTree = "<group>"; };
+		CBF4486A26861A75006C9ACF /* AlbumsListTripsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsListTripsView.swift; sourceTree = "<group>"; };
+		CBF4486C26861D23006C9ACF /* AlbumsListTripsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsListTripsViewModel.swift; sourceTree = "<group>"; };
+		CBF4486E268620AA006C9ACF /* AlbumTripCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumTripCell.swift; sourceTree = "<group>"; };
+		CBF448702686233D006C9ACF /* AlbumCellTripsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumCellTripsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +156,9 @@
 				CBF4485A2685BE9D006C9ACF /* AlbumCell.swift */,
 				CBF4485C2685CCCB006C9ACF /* AlbumCellViewModel.swift */,
 				CB35CA0B2683146700FF7543 /* AlbumsListView.swift */,
+				CBF4486A26861A75006C9ACF /* AlbumsListTripsView.swift */,
+				CBF448702686233D006C9ACF /* AlbumCellTripsViewModel.swift */,
+				CBF4486E268620AA006C9ACF /* AlbumTripCell.swift */,
 				CBF448602685FC14006C9ACF /* ViewModels */,
 			);
 			path = AlbumsList;
@@ -185,6 +196,7 @@
 		CBF448602685FC14006C9ACF /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				CBF4486C26861D23006C9ACF /* AlbumsListTripsViewModel.swift */,
 				CBF448622685FC65006C9ACF /* AlbumsListDaysViewModel.swift */,
 				CBF448632685FC65006C9ACF /* AlbumsListLocationsViewModel.swift */,
 				CBF448612685FC65006C9ACF /* AlbumsListViewModelProtocol.swift */,
@@ -275,11 +287,14 @@
 				CBF4485B2685BE9D006C9ACF /* AlbumCell.swift in Sources */,
 				CBF448652685FC65006C9ACF /* AlbumsListDaysViewModel.swift in Sources */,
 				CB1881DC26833DBE00CE0DA9 /* DateExtension.swift in Sources */,
+				CBF4486B26861A75006C9ACF /* AlbumsListTripsView.swift in Sources */,
 				CB35CA0C2683146700FF7543 /* AlbumsListView.swift in Sources */,
 				CB35CA14268316CB00FF7543 /* HomeTabView.swift in Sources */,
 				CBF448532684E01E006C9ACF /* PhotosByTrip.swift in Sources */,
+				CBF4486D26861D23006C9ACF /* AlbumsListTripsViewModel.swift in Sources */,
 				CBF448642685FC65006C9ACF /* AlbumsListViewModelProtocol.swift in Sources */,
 				CBF448662685FC65006C9ACF /* AlbumsListLocationsViewModel.swift in Sources */,
+				CBF4486F268620AA006C9ACF /* AlbumTripCell.swift in Sources */,
 				CBF448552684F122006C9ACF /* RemoteImageView.swift in Sources */,
 				CB35CA15268316CB00FF7543 /* SettingsView.swift in Sources */,
 				CB1881D7268335AC00CE0DA9 /* PhotosFetcher.swift in Sources */,
@@ -289,6 +304,7 @@
 				CBF448512684E013006C9ACF /* PhotosByLocation.swift in Sources */,
 				CBF4485D2685CCCB006C9ACF /* AlbumCellViewModel.swift in Sources */,
 				CB35CA16268316CB00FF7543 /* HomeTabViewModel.swift in Sources */,
+				CBF448712686233D006C9ACF /* AlbumCellTripsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
