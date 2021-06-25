@@ -10,7 +10,7 @@ import Photos
 import Introspect
 
 struct AlbumTripCell: View {
-    @StateObject var viewModel: AlbumCellTripsViewModel
+    @StateObject var viewModel: AlbumTripCellViewModel
     private let coverHeight: CGFloat = 250
     
     @State private var pushPresented: Bool = false

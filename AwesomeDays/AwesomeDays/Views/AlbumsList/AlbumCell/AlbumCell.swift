@@ -50,6 +50,7 @@ struct AlbumCell: View {
                 ForEach(assets, id: \.hash) { asset in
                     RemoteImageView(with: asset, photosFetcher: viewModel.photosFetcher)
                         .aspectRatio(contentMode: .fit)
+                        .cornerRadius(14)
                 }
             }
             .frame(height: cellHeight)

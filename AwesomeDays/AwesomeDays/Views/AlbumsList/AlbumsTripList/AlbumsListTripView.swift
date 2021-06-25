@@ -16,10 +16,10 @@ struct AlbumsListTripView: View {
             ScrollView {
                 LazyVGrid(columns: [GridItem()], spacing: 8) {
                     ForEach(viewModel.tripsToPresent()) { trip in
-                        AlbumCellTripsViewModel(photosByDay: trip.photosByDays,
-                                                tripTitle: trip.description,
-                                                photosFetcher: viewModel.photosFetcher,
-                                                parentViewSize: fullView.size)
+                        AlbumTripCellViewModel(photosByDay: trip.photosByDays,
+                                               tripTitle: trip.description,
+                                               photosFetcher: viewModel.photosFetcher,
+                                               parentViewSize: fullView.size)
                             .instantiateView()
                     }
                 }

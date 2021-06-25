@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Photos
 
-class AlbumCellTripsViewModel: ObservableObject {
+class AlbumTripCellViewModel: ObservableObject {
     let photosByDay: [PhotosByDay]
     let tripTitle: String
     let photosFetcher: PhotosFetcher
