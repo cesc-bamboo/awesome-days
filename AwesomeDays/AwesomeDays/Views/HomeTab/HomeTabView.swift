@@ -12,25 +12,11 @@ struct HomeTabView: View {
     
     var body: some View {
         TabView {
-            AlbumsListViewModel().instantiateView()
-                .tabItem {
-                    Label("Days", systemImage: "calendar")
+            ForEach(HomeTabs.allCases, id: \.self) { tab in
+                tab.view.tabItem {
+                    Label(tab.name, systemImage: tab.iconName)
                 }
-            
-            AlbumsListViewModel().instantiateView()
-                .tabItem {
-                    Label("Locations", systemImage: "mappin.and.ellipse")
-                }
-            
-            AlbumsListViewModel().instantiateView()
-                .tabItem {
-                    Label("Trips", systemImage: "airplane")
-                }
-            
-            SettingsViewModel().instantiateView()
-                .tabItem {
-                    Label("Settings", systemImage: "gearshape")
-                }
+            }
         }.accentColor(.green)
     }
 }
