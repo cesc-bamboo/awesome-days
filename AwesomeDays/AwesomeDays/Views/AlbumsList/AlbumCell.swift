@@ -43,7 +43,7 @@ struct AlbumCell: View {
     
     func photosGrid(with assets: [PHAsset]) -> some View {
         let cellWidth: CGFloat = viewModel.parentViewSize.width * 0.9
-        let cellHeight: CGFloat = cellWidth * 0.75
+        let cellHeight: CGFloat = min(cellWidth * 0.75, viewModel.parentViewSize.height)
         
         return ScrollView(.horizontal) {
             LazyHGrid(rows: [GridItem(.flexible(minimum: cellWidth*0.5, maximum: cellWidth))], spacing: 8) {
