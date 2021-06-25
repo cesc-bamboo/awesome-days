@@ -15,18 +15,14 @@ struct AlbumsListView: View {
         ScrollView {
             LazyVGrid(columns: [GridItem()], spacing: 8) {
                 ForEach(viewModel.allPhotosBySpecialDays(), id: \.date) { specialDay in
-                    if let asset: PHAsset = specialDay.photos.first {
-                        VStack {
-                            Text(specialDay.description)
-                            RemoteImageView(with: asset, photosFetcher: viewModel.photosFetcher)
-                                .aspectRatio(contentMode: .fit)
-                                .frame(height: 250)
-                        }
-                    } else {
-                        Image(systemName: "trash.fill")
+                    VStack {
+                        Text(specialDay.description)
+                        AlbumCellViewModel(assets: specialDay.photos, photosFetcher: viewModel.photosFetcher)
+                            .instantiateView()
                     }
                 }
             }
+            
         }.onAppear {
             viewModel.fetchPhotosAskingPermission()
         }

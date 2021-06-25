@@ -25,6 +25,8 @@
 		CBF448552684F122006C9ACF /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF448542684F122006C9ACF /* RemoteImageView.swift */; };
 		CBF448572684F13E006C9ACF /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF448562684F13E006C9ACF /* ImageLoader.swift */; };
 		CBF448592684F156006C9ACF /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF448582684F156006C9ACF /* ImageCache.swift */; };
+		CBF4485B2685BE9D006C9ACF /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4485A2685BE9D006C9ACF /* AlbumCell.swift */; };
+		CBF4485D2685CCCB006C9ACF /* AlbumCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4485C2685CCCB006C9ACF /* AlbumCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		CBF448542684F122006C9ACF /* RemoteImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
 		CBF448562684F13E006C9ACF /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		CBF448582684F156006C9ACF /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		CBF4485A2685BE9D006C9ACF /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
+		CBF4485C2685CCCB006C9ACF /* AlbumCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				CBF448542684F122006C9ACF /* RemoteImageView.swift */,
+				CBF4485A2685BE9D006C9ACF /* AlbumCell.swift */,
+				CBF4485C2685CCCB006C9ACF /* AlbumCellViewModel.swift */,
 				CB35CA0B2683146700FF7543 /* AlbumsListView.swift */,
 				CB35CA0D2683147E00FF7543 /* AlbumsListViewModel.swift */,
 			);
@@ -241,6 +247,7 @@
 				CBF4484F2684DFF8006C9ACF /* PhotosByDay.swift in Sources */,
 				CBF448592684F156006C9ACF /* ImageCache.swift in Sources */,
 				CBF448572684F13E006C9ACF /* ImageLoader.swift in Sources */,
+				CBF4485B2685BE9D006C9ACF /* AlbumCell.swift in Sources */,
 				CB1881DC26833DBE00CE0DA9 /* DateExtension.swift in Sources */,
 				CB35CA0C2683146700FF7543 /* AlbumsListView.swift in Sources */,
 				CB35CA14268316CB00FF7543 /* HomeTabView.swift in Sources */,
@@ -252,6 +259,7 @@
 				CB35C9FA268235F800FF7543 /* AwesomeDaysApp.swift in Sources */,
 				CB35CA13268316CB00FF7543 /* SettingsViewModel.swift in Sources */,
 				CBF448512684E013006C9ACF /* PhotosByLocation.swift in Sources */,
+				CBF4485D2685CCCB006C9ACF /* AlbumCellViewModel.swift in Sources */,
 				CB35CA16268316CB00FF7543 /* HomeTabViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
