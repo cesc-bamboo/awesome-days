@@ -9,20 +9,17 @@ import SwiftUI
 
 struct SettingsView: View {
     @StateObject var viewModel: SettingsViewModel
-    @State var picturesPerDay: Int
-    @State var picturesPerLocation: Int
-    @State var daysPerTrip: Int
     
     var body: some View {
         VStack {
             valueStepper(description: "Number of pictures to be considered a special day",
-                         value: $picturesPerDay)
+                         value: $viewModel.picturesPerDay)
             
             valueStepper(description: "Number of pictures in the same location to be considered a special location",
-                         value: $picturesPerLocation)
+                         value: $viewModel.picturesPerLocation)
             
             valueStepper(description: "Number of days to be considered a special trip",
-                         value: $daysPerTrip)
+                         value: $viewModel.daysPerTrip)
         }
     }
     
