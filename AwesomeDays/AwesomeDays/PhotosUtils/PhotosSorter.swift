@@ -9,9 +9,15 @@ import Foundation
 import Photos
 
 class PhotosSorter {
-    private let isSpecialDayThreshold: Int = 4
-    private let isSpecialLocationThreshold: Int = 10
-    private let isSpecialTripThreshold: Int = 2
+    private var isSpecialDayThreshold: Int = 3
+    private var isSpecialLocationThreshold: Int = 3
+    private var isSpecialTripThreshold: Int = 3
+    
+    func setThresholds(isSpecialDayThreshold: Int, isSpecialLocationThreshold: Int, isSpecialTripThreshold: Int) {
+        self.isSpecialDayThreshold = isSpecialDayThreshold
+        self.isSpecialLocationThreshold = isSpecialLocationThreshold
+        self.isSpecialTripThreshold = isSpecialTripThreshold
+    }
     
     func sortBySpecialDays(photos: PHFetchResult<PHAsset>) -> [PhotosByDay] {
         var daysList: [PhotosByDay] = []

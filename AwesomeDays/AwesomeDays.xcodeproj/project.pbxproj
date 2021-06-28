@@ -35,6 +35,8 @@
 		CBF4488926862FEA006C9ACF /* AlbumsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4487E26862FEA006C9ACF /* AlbumsListView.swift */; };
 		CBF4488A26862FEA006C9ACF /* AlbumsListLocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4487F26862FEA006C9ACF /* AlbumsListLocationsViewModel.swift */; };
 		CBF4488B26862FEA006C9ACF /* AlbumsListDaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4488026862FEA006C9ACF /* AlbumsListDaysViewModel.swift */; };
+		CBF4488E268A042B006C9ACF /* SettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4488D268A042B006C9ACF /* SettingsStorage.swift */; };
+		CBF44890268A0B55006C9ACF /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4488F268A0B55006C9ACF /* UserDefaultsExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +69,8 @@
 		CBF4487E26862FEA006C9ACF /* AlbumsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsListView.swift; sourceTree = "<group>"; };
 		CBF4487F26862FEA006C9ACF /* AlbumsListLocationsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsListLocationsViewModel.swift; sourceTree = "<group>"; };
 		CBF4488026862FEA006C9ACF /* AlbumsListDaysViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsListDaysViewModel.swift; sourceTree = "<group>"; };
+		CBF4488D268A042B006C9ACF /* SettingsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStorage.swift; sourceTree = "<group>"; };
+		CBF4488F268A0B55006C9ACF /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				CB1881DB26833DBE00CE0DA9 /* DateExtension.swift */,
+				CBF4488F268A0B55006C9ACF /* UserDefaultsExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 		CB35C9F8268235F800FF7543 /* AwesomeDays */ = {
 			isa = PBXGroup;
 			children = (
+				CBF4488C268A03DB006C9ACF /* Database */,
 				CBF4484D2684DFCE006C9ACF /* Models */,
 				CB1881DA26833DB000CE0DA9 /* Extensions */,
 				CB1881D52683354800CE0DA9 /* PhotosUtils */,
@@ -228,6 +234,14 @@
 			path = AlbumsList;
 			sourceTree = "<group>";
 		};
+		CBF4488C268A03DB006C9ACF /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				CBF4488D268A042B006C9ACF /* SettingsStorage.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -311,9 +325,11 @@
 				CBF4488426862FEA006C9ACF /* AlbumsListTripsViewModel.swift in Sources */,
 				CBF4484F2684DFF8006C9ACF /* PhotosByDay.swift in Sources */,
 				CBF4488526862FEA006C9ACF /* AlbumsListTripView.swift in Sources */,
+				CBF44890268A0B55006C9ACF /* UserDefaultsExtension.swift in Sources */,
 				CBF4488A26862FEA006C9ACF /* AlbumsListLocationsViewModel.swift in Sources */,
 				CBF448592684F156006C9ACF /* ImageCache.swift in Sources */,
 				CBF448572684F13E006C9ACF /* ImageLoader.swift in Sources */,
+				CBF4488E268A042B006C9ACF /* SettingsStorage.swift in Sources */,
 				CB1881DC26833DBE00CE0DA9 /* DateExtension.swift in Sources */,
 				CB35CA14268316CB00FF7543 /* HomeTabView.swift in Sources */,
 				CBF448532684E01E006C9ACF /* PhotosByTrip.swift in Sources */,
