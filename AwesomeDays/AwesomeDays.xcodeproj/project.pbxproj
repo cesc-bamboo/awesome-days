@@ -17,6 +17,7 @@
 		CB35CA14268316CB00FF7543 /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB35CA122683156000FF7543 /* HomeTabView.swift */; };
 		CB35CA15268316CB00FF7543 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB35CA102683153200FF7543 /* SettingsView.swift */; };
 		CB35CA16268316CB00FF7543 /* HomeTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB35CA112683156000FF7543 /* HomeTabViewModel.swift */; };
+		CB9E9E36268A804300F4805E /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9E9E35268A804300F4805E /* AppContext.swift */; };
 		CBF4484F2684DFF8006C9ACF /* PhotosByDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4484E2684DFF8006C9ACF /* PhotosByDay.swift */; };
 		CBF448512684E013006C9ACF /* PhotosByLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF448502684E013006C9ACF /* PhotosByLocation.swift */; };
 		CBF448532684E01E006C9ACF /* PhotosByTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF448522684E01E006C9ACF /* PhotosByTrip.swift */; };
@@ -52,6 +53,7 @@
 		CB35CA102683153200FF7543 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CB35CA112683156000FF7543 /* HomeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModel.swift; sourceTree = "<group>"; };
 		CB35CA122683156000FF7543 /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
+		CB9E9E35268A804300F4805E /* AppContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
 		CBF4484E2684DFF8006C9ACF /* PhotosByDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosByDay.swift; sourceTree = "<group>"; };
 		CBF448502684E013006C9ACF /* PhotosByLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosByLocation.swift; sourceTree = "<group>"; };
 		CBF448522684E01E006C9ACF /* PhotosByTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosByTrip.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 		CB35C9F8268235F800FF7543 /* AwesomeDays */ = {
 			isa = PBXGroup;
 			children = (
+				CB9E9E34268A802D00F4805E /* Shared */,
 				CBF4488C268A03DB006C9ACF /* Database */,
 				CBF4484D2684DFCE006C9ACF /* Models */,
 				CB1881DA26833DB000CE0DA9 /* Extensions */,
@@ -184,6 +187,14 @@
 				CB35CA112683156000FF7543 /* HomeTabViewModel.swift */,
 			);
 			path = HomeTab;
+			sourceTree = "<group>";
+		};
+		CB9E9E34268A802D00F4805E /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				CB9E9E35268A804300F4805E /* AppContext.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		CBF4484D2684DFCE006C9ACF /* Models */ = {
@@ -335,6 +346,7 @@
 				CBF448532684E01E006C9ACF /* PhotosByTrip.swift in Sources */,
 				CB35CA15268316CB00FF7543 /* SettingsView.swift in Sources */,
 				CB1881D7268335AC00CE0DA9 /* PhotosFetcher.swift in Sources */,
+				CB9E9E36268A804300F4805E /* AppContext.swift in Sources */,
 				CBF4488126862FEA006C9ACF /* RemoteImageView.swift in Sources */,
 				CB1881D926833B6200CE0DA9 /* PhotosSorter.swift in Sources */,
 				CBF4488726862FEA006C9ACF /* AlbumCellViewModel.swift in Sources */,

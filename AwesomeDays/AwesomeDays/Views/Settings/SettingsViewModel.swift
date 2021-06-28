@@ -21,9 +21,10 @@ class SettingsViewModel: ObservableObject {
         didSet { settingsStorage.save(.DaysPerTrip, value: daysPerTrip) }
     }
     
-    private var settingsStorage = SettingsStorage()
+    private var settingsStorage: SettingsStorage
     
-    init() {
+    init(settingsStorage: SettingsStorage = AppContext.settingsStorage) {
+        self.settingsStorage = settingsStorage
         picturesPerDay = settingsStorage.load(.PicturesPerDay)
         picturesPerLocation = settingsStorage.load(.PicturesPerLocation)
         daysPerTrip = settingsStorage.load(.DaysPerTrip)

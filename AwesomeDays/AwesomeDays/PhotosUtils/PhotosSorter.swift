@@ -14,6 +14,7 @@ class PhotosSorter {
     private var isSpecialTripThreshold: Int = 3
     
     func setThresholds(isSpecialDayThreshold: Int, isSpecialLocationThreshold: Int, isSpecialTripThreshold: Int) {
+        print("Setting new thresholds")
         self.isSpecialDayThreshold = isSpecialDayThreshold
         self.isSpecialLocationThreshold = isSpecialLocationThreshold
         self.isSpecialTripThreshold = isSpecialTripThreshold
