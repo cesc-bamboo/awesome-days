@@ -34,7 +34,7 @@ class PhotosSorter {
             }
         }
         
-        let specialDays: [PhotosByDay] = daysList.filter { $0.count > isSpecialDayThreshold }
+        let specialDays: [PhotosByDay] = daysList.filter { $0.count >= isSpecialDayThreshold }
         
         specialDays.forEach{ byDay in
             print("Special day found: \(byDay.date) => \(byDay.count)")
@@ -63,7 +63,7 @@ class PhotosSorter {
             photoAdded = false
         }
         
-        let specialLocations: [PhotosByLocation] = locationList.filter { $0.count > isSpecialLocationThreshold }
+        let specialLocations: [PhotosByLocation] = locationList.filter { $0.count >= isSpecialLocationThreshold }
         
         specialLocations.forEach{ byLocation in
             if let firstLocation = byLocation.photos.first?.location?.coordinate {

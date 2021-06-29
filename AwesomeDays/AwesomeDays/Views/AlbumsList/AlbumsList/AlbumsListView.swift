@@ -26,8 +26,6 @@ struct AlbumsListView<ViewModel>: View where ViewModel: AlbumListViewModelProtoc
                     }
                 }
             }
-        }.onAppear {
-            viewModel.fetchPhotosAskingPermission()
         }
     }
 }

@@ -30,7 +30,6 @@ class AlbumsListViewModelDefault<PhotosByType: PhotosByProtocol>: AlbumListViewM
     private let settingsStorage: SettingsStorage
     @Published var valueUpdated: Bool = true
     private var cancellable: AnyCancellable?
-    private var cancellable2: AnyCancellable?
     
     init(photosToPresent: [PhotosByType]? = nil,
          photosFetcher: PhotosFetcher = PhotosFetcher(),
@@ -41,21 +40,21 @@ class AlbumsListViewModelDefault<PhotosByType: PhotosByProtocol>: AlbumListViewM
         self.photosSorter = photosSorter
         self.settingsStorage = settingsStorage
         
+        
+        
         self.cancellable = settingsStorage.publisher.sink { newValue in
-            print("## FIRST \(newValue) -> settings storage == \(self.settingsStorage)")
-        }
-        
-        self.cancellable2 = settingsStorage.publisher.sink { newValue in
-            print("## CALLED \(newValue)")
-            self.photosSorter.setThresholds(isSpecialDayThreshold: self.settingsStorage.load(.PicturesPerDay),
-                                            isSpecialLocationThreshold: self.settingsStorage.load(.PicturesPerLocation),
-                                            isSpecialTripThreshold: self.settingsStorage.load(.DaysPerTrip))
+            self.updateSorterThresholds()
             self.valueUpdated.toggle()
+            self.photosAlreadySorted = nil
         }
         
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-//            self.settingsStorage.save(.PicturesPerDay, value: 1)
-//        }
+        self.fetchPhotosAskingPermission()
+    }
+    
+    private func updateSorterThresholds() {
+        photosSorter.setThresholds(isSpecialDayThreshold: self.settingsStorage.load(.PicturesPerDay),
+                                        isSpecialLocationThreshold: self.settingsStorage.load(.PicturesPerLocation),
+                                        isSpecialTripThreshold: self.settingsStorage.load(.DaysPerTrip))
     }
     
     func fetchPhotosAskingPermission() {
@@ -74,10 +73,6 @@ class AlbumsListViewModelDefault<PhotosByType: PhotosByProtocol>: AlbumListViewM
     func photosToPresent() -> [PhotosByType] {
         return photosAlreadySorted ?? []
     }
-    //
-    //    func allPhotosBySpecialTrips() -> [PhotosByTrip] {
-    //        return self.photosSorter.sortBySpecialTrips(photos: self.photosFetcher.allPhotos)
-    //    }
     
     func instantiateView() -> some View {
         AlbumsListView(viewModel: self)
