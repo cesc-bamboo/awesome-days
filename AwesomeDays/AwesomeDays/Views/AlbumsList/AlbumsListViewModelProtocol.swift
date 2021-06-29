@@ -21,14 +21,13 @@ protocol AlbumListViewModelProtocol: ObservableObject {
 class AlbumsListViewModelDefault<PhotosByType: PhotosByProtocol>: AlbumListViewModelProtocol {
     let photosFetcher: PhotosFetcher
     let photosSorter: PhotosSorter
-    var photosAlreadySorted: [PhotosByType]?
+    @Published var photosAlreadySorted: [PhotosByType]?
     
-    @Published var allPhotos = PHFetchResult<PHAsset>()
-    @Published var smartAlbums = PHFetchResult<PHAssetCollection>()
-    @Published var userCollections = PHFetchResult<PHAssetCollection>()
+    private var allPhotos = PHFetchResult<PHAsset>()
+    private var smartAlbums = PHFetchResult<PHAssetCollection>()
+    private var userCollections = PHFetchResult<PHAssetCollection>()
     
     private let settingsStorage: SettingsStorage
-    @Published var valueUpdated: Bool = true
     private var cancellable: AnyCancellable?
     
     init(photosToPresent: [PhotosByType]? = nil,
@@ -40,15 +39,16 @@ class AlbumsListViewModelDefault<PhotosByType: PhotosByProtocol>: AlbumListViewM
         self.photosSorter = photosSorter
         self.settingsStorage = settingsStorage
         
-        
-        
+        observeChangesInSettings()
+        updateSorterThresholds()
+        fetchPhotosAskingPermission()
+    }
+    
+    private func observeChangesInSettings() {
         self.cancellable = settingsStorage.publisher.sink { newValue in
             self.updateSorterThresholds()
-            self.valueUpdated.toggle()
             self.photosAlreadySorted = nil
         }
-        
-        self.fetchPhotosAskingPermission()
     }
     
     private func updateSorterThresholds() {
@@ -66,6 +66,7 @@ class AlbumsListViewModelDefault<PhotosByType: PhotosByProtocol>: AlbumListViewM
                 self.allPhotos = self.photosFetcher.allPhotos
                 self.smartAlbums = self.photosFetcher.smartAlbums
                 self.userCollections = self.photosFetcher.userCollections
+                self.photosAlreadySorted = nil
             }
         }
     }
