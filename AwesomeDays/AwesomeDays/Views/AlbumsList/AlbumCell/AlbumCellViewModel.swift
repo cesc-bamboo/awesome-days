@@ -10,11 +10,11 @@ import SwiftUI
 import Photos
 
 class AlbumCellViewModel: ObservableObject {
+    private let photosFetcher: PhotosFetcher
     let assets: [PHAsset]
-    let photosFetcher: PhotosFetcher
     let parentViewSize: CGSize
     
-    init(assets: [PHAsset], photosFetcher: PhotosFetcher, parentViewSize: CGSize) {
+    init(assets: [PHAsset], photosFetcher: PhotosFetcher = AppContext.photosFetcher, parentViewSize: CGSize) {
         self.assets = assets
         self.photosFetcher = photosFetcher
         self.parentViewSize = parentViewSize

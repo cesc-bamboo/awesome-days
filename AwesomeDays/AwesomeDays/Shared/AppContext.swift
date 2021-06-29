@@ -9,4 +9,5 @@ import Foundation
 
 struct AppContext {
     static let settingsStorage = SettingsStorage()
+    static let photosFetcher = PhotosFetcher()
 }

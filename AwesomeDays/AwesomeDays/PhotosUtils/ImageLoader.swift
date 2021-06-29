@@ -13,11 +13,11 @@ import Photos
 
 class ImageLoader: ObservableObject {
     @Published var image: UIImage?
-    var asset: PHAsset
-    var photosFetcher: PhotosFetcher
+    private let asset: PHAsset
+    private let photosFetcher: PhotosFetcher
     var imageCache = ImageCache.getImageCache()
 
-    init(asset: PHAsset, photosFetcher: PhotosFetcher) {
+    init(asset: PHAsset, photosFetcher: PhotosFetcher = AppContext.photosFetcher) {
         self.asset = asset
         self.photosFetcher = photosFetcher
         loadImage()

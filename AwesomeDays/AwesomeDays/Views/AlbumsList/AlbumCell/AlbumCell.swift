@@ -14,6 +14,8 @@ struct AlbumCell: View {
     private let coverHeight: CGFloat = 250
     
     @State private var isAlbumExpanded: Bool = false
+    @State var isPhotoModalPresented: Bool = false
+    @StateObject var selectedAsset = ObservableAsset()
     
     var body: some View {
         if (isAlbumExpanded) {
@@ -24,8 +26,6 @@ struct AlbumCell: View {
             Text("Can't find images!")
         }
         
-        
-        
         //        Button(action: onButtonTap, label: {
         //            RemoteImageView(with: asset, photosFetcher: photosFetcher)
         //                .aspectRatio(contentMode: .fit)
@@ -35,7 +35,7 @@ struct AlbumCell: View {
     
     func coverButton(with asset: PHAsset) -> some View {
         Button(action: onButtonTap, label: {
-            RemoteImageView(with: asset, photosFetcher: viewModel.photosFetcher)
+            RemoteImageView(with: asset)
                 .aspectRatio(contentMode: .fit)
                 .frame(height: coverHeight)
         })
@@ -46,20 +46,37 @@ struct AlbumCell: View {
         let cellHeight: CGFloat = min(cellWidth * 0.75, viewModel.parentViewSize.height)
         
         return ScrollView(.horizontal) {
-            LazyHGrid(rows: [GridItem(.flexible(minimum: cellWidth*0.5, maximum: cellWidth))], spacing: 8) {
+            LazyHGrid(rows: [GridItem(.flexible(minimum: cellWidth * 0.5, maximum: cellWidth))], spacing: 8) {
                 ForEach(assets, id: \.hash) { asset in
-                    RemoteImageView(with: asset, photosFetcher: viewModel.photosFetcher)
-                        .aspectRatio(contentMode: .fit)
-                        .cornerRadius(14)
+                    imageViewFrom(asset: asset)
                 }
             }
             .frame(height: cellHeight)
             .introspectScrollView { $0.alwaysBounceVertical = false }
+            .sheet(isPresented: $isPhotoModalPresented) {
+                if let selectedAsset = selectedAsset {
+                    PhotoDetailViewModel(asset: selectedAsset.asset!).instantiateView()
+                }
+                
+            }
         }
-        
+    }
+    
+    func imageViewFrom(asset: PHAsset) -> some View {
+        return RemoteImageView(with: asset)
+            .aspectRatio(contentMode: .fit)
+            .cornerRadius(14)
+            .onTapGesture {
+                selectedAsset.asset = asset
+                isPhotoModalPresented = true
+            }
     }
     
     func onButtonTap() {
         isAlbumExpanded.toggle()
     }
+}
+
+class ObservableAsset: ObservableObject {
+    var asset: PHAsset?
 }

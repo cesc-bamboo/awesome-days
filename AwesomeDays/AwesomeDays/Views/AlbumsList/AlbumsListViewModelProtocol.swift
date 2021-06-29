@@ -31,7 +31,7 @@ class AlbumsListViewModelDefault<PhotosByType: PhotosByProtocol>: AlbumListViewM
     private var cancellable: AnyCancellable?
     
     init(photosToPresent: [PhotosByType]? = nil,
-         photosFetcher: PhotosFetcher = PhotosFetcher(),
+         photosFetcher: PhotosFetcher = AppContext.photosFetcher,
          photosSorter: PhotosSorter = PhotosSorter(),
          settingsStorage: SettingsStorage = AppContext.settingsStorage) {
         self.photosAlreadySorted = photosToPresent
