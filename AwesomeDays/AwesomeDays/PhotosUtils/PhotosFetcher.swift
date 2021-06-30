@@ -14,6 +14,7 @@ class PhotosFetcher: NSObject {
     var allPhotos = PHFetchResult<PHAsset>()
     var smartAlbums = PHFetchResult<PHAssetCollection>()
     var userCollections = PHFetchResult<PHAssetCollection>()
+    var imageCache = ImageCache.getImageCache()
     
     override init() {
         super.init()
@@ -61,34 +62,53 @@ class PhotosFetcher: NSObject {
         let options = PHImageRequestOptions()
         options.deliveryMode = .highQualityFormat
         options.isSynchronous = false
-
-        imageManager.requestImage(for: asset,
-                                     targetSize: PHImageManagerMaximumSize,
-                                     contentMode: .aspectFit,
-                                     options: options,
-                                     resultHandler: { (image, info) in
-            completionHandler(image)
-        })
+        
+        let fullImageKey = "\(asset.hash)-full"
+        if let cacheImage = fetchImageFromCache(key: fullImageKey) {
+            completionHandler(cacheImage)
+        } else {
+            imageManager.requestImage(for: asset,
+                                         targetSize: PHImageManagerMaximumSize,
+                                         contentMode: .aspectFit,
+                                         options: options,
+                                         resultHandler: { (image, info) in
+                self.cacheImage(image, key: fullImageKey)
+                completionHandler(image)
+            })
+        }
     }
     
     func fetchThumbnailImage(asset: PHAsset, lowResHandler: ((UIImage?) ->())?, highResHandler: ((UIImage?) ->())?) {
         var lowResRequest: PHImageRequestID? = nil
         
         if let lowResHandler = lowResHandler {
+            let lowResImageKey = "\(asset.hash)-thumbnail-low"
+            if let cacheImage = fetchImageFromCache(key: lowResImageKey) {
+                lowResHandler(cacheImage)
+            } else {
+            
+            
             let lowResOptions = PHImageRequestOptions()
             lowResOptions.deliveryMode = .fastFormat
             lowResOptions.isSynchronous = false
             
             lowResRequest = imageManager.requestImage(for: asset,
-                                         targetSize: CGSize(width: 512.0, height: 512.0),
-                                         contentMode: .aspectFit,
-                                         options: lowResOptions,
-                                         resultHandler: { (image, info) in
+                                                         targetSize: CGSize(width: 512.0, height: 512.0),
+                                                         contentMode: .aspectFit,
+                                                         options: lowResOptions,
+                                                         resultHandler: { (image, info) in
+                self.cacheImage(image, key: lowResImageKey)
                 lowResHandler(image)
             })
+            }
         }
-                                         
+        
         if let highResHandler = highResHandler {
+            let highResImageKey = "\(asset.hash)-thumbnail-high"
+            if let cacheImage = fetchImageFromCache(key: highResImageKey) {
+                highResHandler(cacheImage)
+            } else {
+                
             let highResOptions = PHImageRequestOptions()
             highResOptions.deliveryMode = .highQualityFormat
             highResOptions.isSynchronous = false
@@ -103,10 +123,25 @@ class PhotosFetcher: NSObject {
                     // If we already have the high resolution image, we cancel the low resolution request
                     self.imageManager.cancelImageRequest(lowResRequest)
                 }
-                
+                self.cacheImage(image, key: highResImageKey)
                 highResHandler(image)
             })
+            }
         }
+    }
+    
+    func fetchImageFromCache(key: String) -> UIImage? {
+        let img = imageCache.get(forKey: key)
+        if img != nil {
+            print("Cache: hit for key \(key)")
+        }
+        return img
+    }
+    
+    func cacheImage(_ image: UIImage?, key: String) {
+        guard let image = image else { return }
+        print("Cache: saving key \(key)")
+        imageCache.set(forKey: key, image: image)
     }
 }
 

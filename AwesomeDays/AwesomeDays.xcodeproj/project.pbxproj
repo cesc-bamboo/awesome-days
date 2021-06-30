@@ -20,10 +20,10 @@
 		CB9E9E36268A804300F4805E /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9E9E35268A804300F4805E /* AppContext.swift */; };
 		CB9E9E39268B6E6100F4805E /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9E9E38268B6E6100F4805E /* PhotoDetailViewModel.swift */; };
 		CB9E9E3B268B6E6E00F4805E /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9E9E3A268B6E6E00F4805E /* PhotoDetailView.swift */; };
+		CB9E9E3D268CACD700F4805E /* RemoteImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9E9E3C268CACD600F4805E /* RemoteImageViewModel.swift */; };
 		CBF4484F2684DFF8006C9ACF /* PhotosByDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4484E2684DFF8006C9ACF /* PhotosByDay.swift */; };
 		CBF448512684E013006C9ACF /* PhotosByLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF448502684E013006C9ACF /* PhotosByLocation.swift */; };
 		CBF448532684E01E006C9ACF /* PhotosByTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF448522684E01E006C9ACF /* PhotosByTrip.swift */; };
-		CBF448572684F13E006C9ACF /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF448562684F13E006C9ACF /* ImageLoader.swift */; };
 		CBF448592684F156006C9ACF /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF448582684F156006C9ACF /* ImageCache.swift */; };
 		CBF4485F2685F865006C9ACF /* PhotosByProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4485E2685F865006C9ACF /* PhotosByProtocol.swift */; };
 		CBF448692686069C006C9ACF /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = CBF448682686069C006C9ACF /* Introspect */; };
@@ -58,10 +58,10 @@
 		CB9E9E35268A804300F4805E /* AppContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
 		CB9E9E38268B6E6100F4805E /* PhotoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewModel.swift; sourceTree = "<group>"; };
 		CB9E9E3A268B6E6E00F4805E /* PhotoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
+		CB9E9E3C268CACD600F4805E /* RemoteImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageViewModel.swift; sourceTree = "<group>"; };
 		CBF4484E2684DFF8006C9ACF /* PhotosByDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosByDay.swift; sourceTree = "<group>"; };
 		CBF448502684E013006C9ACF /* PhotosByLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosByLocation.swift; sourceTree = "<group>"; };
 		CBF448522684E01E006C9ACF /* PhotosByTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosByTrip.swift; sourceTree = "<group>"; };
-		CBF448562684F13E006C9ACF /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		CBF448582684F156006C9ACF /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		CBF4485E2685F865006C9ACF /* PhotosByProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosByProtocol.swift; sourceTree = "<group>"; };
 		CBF4487226862FE9006C9ACF /* RemoteImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
@@ -94,7 +94,6 @@
 		CB1881D52683354800CE0DA9 /* PhotosUtils */ = {
 			isa = PBXGroup;
 			children = (
-				CBF448562684F13E006C9ACF /* ImageLoader.swift */,
 				CBF448582684F156006C9ACF /* ImageCache.swift */,
 				CB1881D6268335AC00CE0DA9 /* PhotosFetcher.swift */,
 				CB1881D826833B6200CE0DA9 /* PhotosSorter.swift */,
@@ -172,6 +171,7 @@
 				CBF4487626862FE9006C9ACF /* AlbumsTripList */,
 				CBF4487326862FE9006C9ACF /* AlbumTripCell */,
 				CBF4487226862FE9006C9ACF /* RemoteImageView.swift */,
+				CB9E9E3C268CACD600F4805E /* RemoteImageViewModel.swift */,
 			);
 			path = AlbumsList;
 			sourceTree = "<group>";
@@ -343,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB9E9E3D268CACD700F4805E /* RemoteImageViewModel.swift in Sources */,
 				CBF4488226862FEA006C9ACF /* AlbumTripCellViewModel.swift in Sources */,
 				CBF4488826862FEA006C9ACF /* AlbumsListViewModelProtocol.swift in Sources */,
 				CBF4485F2685F865006C9ACF /* PhotosByProtocol.swift in Sources */,
@@ -353,7 +354,6 @@
 				CBF44890268A0B55006C9ACF /* UserDefaultsExtension.swift in Sources */,
 				CBF4488A26862FEA006C9ACF /* AlbumsListLocationsViewModel.swift in Sources */,
 				CBF448592684F156006C9ACF /* ImageCache.swift in Sources */,
-				CBF448572684F13E006C9ACF /* ImageLoader.swift in Sources */,
 				CBF4488E268A042B006C9ACF /* SettingsStorage.swift in Sources */,
 				CB1881DC26833DBE00CE0DA9 /* DateExtension.swift in Sources */,
 				CB35CA14268316CB00FF7543 /* HomeTabView.swift in Sources */,

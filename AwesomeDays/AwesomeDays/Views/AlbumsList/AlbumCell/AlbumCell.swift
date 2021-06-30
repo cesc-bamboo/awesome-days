@@ -35,7 +35,7 @@ struct AlbumCell: View {
     
     func coverButton(with asset: PHAsset) -> some View {
         Button(action: onButtonTap, label: {
-            RemoteImageView(with: asset)
+            RemoteImageViewModel(with: asset).instantiateView()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: coverHeight)
         })
@@ -63,7 +63,7 @@ struct AlbumCell: View {
     }
     
     func imageViewFrom(asset: PHAsset) -> some View {
-        return RemoteImageView(with: asset)
+        return RemoteImageViewModel(with: asset).instantiateView()
             .aspectRatio(contentMode: .fit)
             .cornerRadius(14)
             .onTapGesture {

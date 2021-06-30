@@ -31,7 +31,7 @@ struct AlbumTripCell: View {
     
     func coverButton(with asset: PHAsset) -> some View {
         Button(action: onButtonTap, label: {
-            RemoteImageView(with: asset, photosFetcher: viewModel.photosFetcher)
+            RemoteImageViewModel(with: asset).instantiateView()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: coverHeight)
         })

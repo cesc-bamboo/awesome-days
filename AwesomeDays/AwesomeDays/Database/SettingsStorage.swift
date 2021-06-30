@@ -27,20 +27,13 @@ class SettingsStorage {
     private let userDefaults = UserDefaults.standard
     
     let publisher = PassthroughSubject<Bool, Never>()
-//    var valueUpdated: Bool = true {
-//        didSet {
-//            objectWillChange.send()
-//            publisher.send(true)
-//        }
-//    }
     
     func save(_ key: SettingsKey, value: Int) {
         userDefaults.set(value, forKey: key.rawValue)
-//        valueUpdated.toggle()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.publisher.send(true)
-        }
-        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//            self.publisher.send(true)
+//        }
+        self.publisher.send(true)
     }
     
     func load(_ key: SettingsKey) -> Int {
