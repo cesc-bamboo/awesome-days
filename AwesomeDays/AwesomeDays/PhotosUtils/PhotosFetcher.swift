@@ -67,67 +67,79 @@ class PhotosFetcher: NSObject {
         if let cacheImage = fetchImageFromCache(key: fullImageKey) {
             completionHandler(cacheImage)
         } else {
-            imageManager.requestImage(for: asset,
-                                         targetSize: PHImageManagerMaximumSize,
-                                         contentMode: .aspectFit,
-                                         options: options,
-                                         resultHandler: { (image, info) in
-                self.cacheImage(image, key: fullImageKey)
-                completionHandler(image)
-            })
+            requestImageAndSaveToCache(for: asset,
+                                          targetSize: PHImageManagerMaximumSize,
+                                          options: options,
+                                          cacheKey: fullImageKey,
+                                          completionHandler: completionHandler)
         }
     }
     
     func fetchThumbnailImage(asset: PHAsset, lowResHandler: ((UIImage?) ->())?, highResHandler: ((UIImage?) ->())?) {
         var lowResRequest: PHImageRequestID? = nil
+        let lowResImageKey = "\(asset.hash)-thumbnail-low"
+        let highResImageKey = "\(asset.hash)-thumbnail-high"
         
+        // 1. Search high resolution thumbnail in cache. If we already have it, return it in highResHandler
+        if let highResHandler = highResHandler,
+           let highResCacheImage = fetchImageFromCache(key: highResImageKey) {
+            print("Cache: hit and shortcut for key \(highResImageKey)")
+            highResHandler(highResCacheImage)
+            return
+        }
+        
+        // 2. If there is no high resolution thumbnail, we'll have to fetch it. We'll fetch (or take from cache) the low resolution thumbnail to present an image quickly
         if let lowResHandler = lowResHandler {
-            let lowResImageKey = "\(asset.hash)-thumbnail-low"
             if let cacheImage = fetchImageFromCache(key: lowResImageKey) {
                 lowResHandler(cacheImage)
             } else {
-            
-            
-            let lowResOptions = PHImageRequestOptions()
-            lowResOptions.deliveryMode = .fastFormat
-            lowResOptions.isSynchronous = false
-            
-            lowResRequest = imageManager.requestImage(for: asset,
-                                                         targetSize: CGSize(width: 512.0, height: 512.0),
-                                                         contentMode: .aspectFit,
-                                                         options: lowResOptions,
-                                                         resultHandler: { (image, info) in
-                self.cacheImage(image, key: lowResImageKey)
-                lowResHandler(image)
-            })
+                let lowResOptions = PHImageRequestOptions()
+                lowResOptions.deliveryMode = .fastFormat
+                lowResOptions.isSynchronous = false
+                
+                lowResRequest = requestImageAndSaveToCache(for: asset,
+                                                              targetSize: CGSize(width: 512.0, height: 512.0),
+                                                              options: lowResOptions,
+                                                              cacheKey: lowResImageKey,
+                                                              completionHandler: lowResHandler)
             }
         }
         
         if let highResHandler = highResHandler {
-            let highResImageKey = "\(asset.hash)-thumbnail-high"
             if let cacheImage = fetchImageFromCache(key: highResImageKey) {
                 highResHandler(cacheImage)
             } else {
+                let highResOptions = PHImageRequestOptions()
+                highResOptions.deliveryMode = .highQualityFormat
+                highResOptions.isSynchronous = false
                 
-            let highResOptions = PHImageRequestOptions()
-            highResOptions.deliveryMode = .highQualityFormat
-            highResOptions.isSynchronous = false
-            
-            imageManager.requestImage(for: asset,
-                                         targetSize: CGSize(width: 512.0, height: 512.0),
-                                         contentMode: .aspectFit,
-                                         options: highResOptions,
-                                         resultHandler: { (image, info) in
-                
-                if let lowResRequest = lowResRequest {
-                    // If we already have the high resolution image, we cancel the low resolution request
-                    self.imageManager.cancelImageRequest(lowResRequest)
+                requestImageAndSaveToCache(for: asset,
+                                              targetSize: CGSize(width: 512.0, height: 512.0),
+                                              options: highResOptions,
+                                              cacheKey: highResImageKey) { image in
+                    if let lowResRequest = lowResRequest {
+                        // If we already have the high resolution image, we cancel the low resolution request
+                        self.imageManager.cancelImageRequest(lowResRequest)
+                    }
+                    highResHandler(image)
                 }
-                self.cacheImage(image, key: highResImageKey)
-                highResHandler(image)
-            })
             }
         }
+    }
+    
+    @discardableResult private func requestImageAndSaveToCache(for asset: PHAsset,
+                                                               targetSize: CGSize,
+                                                               options: PHImageRequestOptions,
+                                                               cacheKey: String,
+                                                               completionHandler: @escaping (UIImage?) -> ()) -> PHImageRequestID {
+        return imageManager.requestImage(for: asset,
+                                            targetSize: targetSize,
+                                            contentMode: .aspectFit,
+                                            options: options,
+                                            resultHandler: { (image, info) in
+            self.cacheImage(image, key: cacheKey)
+            completionHandler(image)
+        })
     }
     
     func fetchImageFromCache(key: String) -> UIImage? {
