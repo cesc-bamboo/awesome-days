@@ -12,7 +12,7 @@ struct PhotoDetailView: View {
     @ObservedObject var viewModel: PhotoDetailViewModel
     
     var body: some View {
-        let imgToShow = viewModel.image ?? UIImage(systemName: "exclamationmark.triangle.fill")!
+        let imgToShow = viewModel.image ?? UIImage(systemName: "clock.arrow.circlepath")!
         return PDFImageView(image: imgToShow)
     }
 }
@@ -30,8 +30,8 @@ struct PDFImageView: UIViewRepresentable {
         let pdfView = PDFView()
         pdfView.document = PDFDocument()
         pdfView.autoScales = true
-        pdfView.maxScaleFactor = 4.0
-        pdfView.minScaleFactor = pdfView.scaleFactorForSizeToFit * 0.7
+        pdfView.maxScaleFactor = 3.0
+        pdfView.minScaleFactor = calculateMinScale(pdfView: pdfView, image: image)
         pdfView.scaleFactor = pdfView.minScaleFactor
         setImage(image, in: pdfView.document)
         return pdfView
@@ -39,6 +39,9 @@ struct PDFImageView: UIViewRepresentable {
 
     func updateUIView(_ uiView: PDFView, context: Context) {
         uiView.document?.removePage(at: 0)
+        
+        uiView.minScaleFactor = calculateMinScale(pdfView: uiView, image: image)
+        uiView.scaleFactor = uiView.minScaleFactor
         setImage(image, in: uiView.document)
     }
     
@@ -46,5 +49,13 @@ struct PDFImageView: UIViewRepresentable {
         guard let document = document,
               let page = PDFPage(image: image) else { return }
         document.insert(page, at: 0)
+    }
+    
+    private func calculateMinScale(pdfView: PDFView, image: UIImage) -> Double {
+        let widthRatio = pdfView.frame.width / image.size.width
+        let heightRatio = pdfView.frame.height / image.size.height
+        let minRatio = min(widthRatio, heightRatio)
+        print("Min ratio: \(minRatio)")
+        return minRatio
     }
 }

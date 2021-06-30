@@ -43,7 +43,15 @@ class ImageLoader: ObservableObject {
     }
 
     func loadImageFromUrl() {
-        photosFetcher.fetchImage(asset: asset, completionHandler: getImageFetched)
+        print("### loadImageFromUrl: \(String(describing: asset.creationDate))")
+        photosFetcher.fetchThumbnailImage(asset: asset, lowResHandler: { image in
+            print("### lowResHandler: \(String(describing: self.asset.creationDate))")
+            self.getImageFetched(image: image)
+            
+        }, highResHandler: { image in
+            print("### highResHandler: \(String(describing: self.asset.creationDate))")
+            self.getImageFetched(image: image)
+        })
     }
     
     func getImageFetched(image: UIImage?) {

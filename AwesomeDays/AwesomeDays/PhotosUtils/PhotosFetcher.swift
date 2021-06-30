@@ -57,18 +57,56 @@ class PhotosFetcher: NSObject {
             options: nil)
     }
     
-    func fetchImage(asset: PHAsset, completionHandler: @escaping (UIImage?) -> ()) {
+    func fetchFullSizeImage(asset: PHAsset, completionHandler: @escaping (UIImage?) -> ()) {
         let options = PHImageRequestOptions()
         options.deliveryMode = .highQualityFormat
         options.isSynchronous = false
-        
+
         imageManager.requestImage(for: asset,
-                                     targetSize: CGSize(width: 512.0, height: 512.0),
+                                     targetSize: PHImageManagerMaximumSize,
                                      contentMode: .aspectFit,
                                      options: options,
                                      resultHandler: { (image, info) in
             completionHandler(image)
         })
+    }
+    
+    func fetchThumbnailImage(asset: PHAsset, lowResHandler: ((UIImage?) ->())?, highResHandler: ((UIImage?) ->())?) {
+        var lowResRequest: PHImageRequestID? = nil
+        
+        if let lowResHandler = lowResHandler {
+            let lowResOptions = PHImageRequestOptions()
+            lowResOptions.deliveryMode = .fastFormat
+            lowResOptions.isSynchronous = false
+            
+            lowResRequest = imageManager.requestImage(for: asset,
+                                         targetSize: CGSize(width: 512.0, height: 512.0),
+                                         contentMode: .aspectFit,
+                                         options: lowResOptions,
+                                         resultHandler: { (image, info) in
+                lowResHandler(image)
+            })
+        }
+                                         
+        if let highResHandler = highResHandler {
+            let highResOptions = PHImageRequestOptions()
+            highResOptions.deliveryMode = .highQualityFormat
+            highResOptions.isSynchronous = false
+            
+            imageManager.requestImage(for: asset,
+                                         targetSize: CGSize(width: 512.0, height: 512.0),
+                                         contentMode: .aspectFit,
+                                         options: highResOptions,
+                                         resultHandler: { (image, info) in
+                
+                if let lowResRequest = lowResRequest {
+                    // If we already have the high resolution image, we cancel the low resolution request
+                    self.imageManager.cancelImageRequest(lowResRequest)
+                }
+                
+                highResHandler(image)
+            })
+        }
     }
 }
 

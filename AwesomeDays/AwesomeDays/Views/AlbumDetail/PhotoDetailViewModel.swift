@@ -20,7 +20,7 @@ class PhotoDetailViewModel: ObservableObject {
     
     init(asset: PHAsset, photosFetcher: PhotosFetcher = AppContext.photosFetcher) {
         self.photosFetcher = photosFetcher
-        photosFetcher.fetchImage(asset: asset) { image in
+        photosFetcher.fetchFullSizeImage(asset: asset) { image in
             self.image = image
         }
     }

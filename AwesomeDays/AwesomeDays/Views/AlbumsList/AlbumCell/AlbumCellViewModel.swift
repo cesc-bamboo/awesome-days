@@ -11,8 +11,8 @@ import Photos
 
 class AlbumCellViewModel: ObservableObject {
     private let photosFetcher: PhotosFetcher
-    let assets: [PHAsset]
-    let parentViewSize: CGSize
+    @Published var assets: [PHAsset]
+    @Published var parentViewSize: CGSize
     
     init(assets: [PHAsset], photosFetcher: PhotosFetcher = AppContext.photosFetcher, parentViewSize: CGSize) {
         self.assets = assets
