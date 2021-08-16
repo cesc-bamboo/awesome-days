@@ -11,11 +11,12 @@ import Photos
 
 class AlbumsListTripsViewModel: AlbumsListViewModelDefault<PhotosByDay> {
     override func photosToPresent() -> [PhotosByDay] {
-        self.photosSorter.sortBySpecialDays(photos: self.photosFetcher.allPhotos)
+//        self.photosSorter.sortBySpecialDays(photos: self.photosFetcher.allPhotos)
+        return []
     }
     
     func tripsToPresent() -> [PhotosByTrip] {
-        self.photosSorter.sortBySpecialTrips(photos: self.photosFetcher.allPhotos)
+        self.photosSorter.sortBySpecialTrips(photos: self.photosFetcher.allPhotos, ordered: .descending)
     }
     
     func instantiateView() -> some View {

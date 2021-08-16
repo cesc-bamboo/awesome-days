@@ -8,6 +8,8 @@
 import Foundation
 import Photos
 
+enum PhotosOrder { case ascending, descending }
+
 class PhotosSorter {
     private var isSpecialDayThreshold: Int = 3
     private var isSpecialLocationThreshold: Int = 3
@@ -74,9 +76,9 @@ class PhotosSorter {
         return specialLocations
     }
     
-    func sortBySpecialTrips(photos: PHFetchResult<PHAsset>) -> [PhotosByTrip] {
+    func sortBySpecialTrips(photos: PHFetchResult<PHAsset>, ordered: PhotosOrder = .ascending) -> [PhotosByTrip] {
         let specialDays = sortBySpecialDays(photos: photos)
-        let sortedDays = specialDays.sorted { $0.date < $1.date }
+        let sortedDays = specialDays.sorted { $0 < $1 }
         
         var trips: [PhotosByTrip] = []
         
@@ -101,6 +103,11 @@ class PhotosSorter {
             print(trip.description)
         }
         
-        return trips
+        switch ordered {
+        case .ascending:
+            return trips
+        case .descending:
+            return trips.reversed()
+        }
     }
 }

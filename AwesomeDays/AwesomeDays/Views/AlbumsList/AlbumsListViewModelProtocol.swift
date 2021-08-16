@@ -23,10 +23,6 @@ class AlbumsListViewModelDefault<PhotosByType: PhotosByProtocol>: AlbumListViewM
     let photosSorter: PhotosSorter
     @Published var photosAlreadySorted: [PhotosByType]?
     
-    private var allPhotos = PHFetchResult<PHAsset>()
-    private var smartAlbums = PHFetchResult<PHAssetCollection>()
-    private var userCollections = PHFetchResult<PHAssetCollection>()
-    
     private let settingsStorage: SettingsStorage
     private var cancellable: AnyCancellable?
     
@@ -61,13 +57,6 @@ class AlbumsListViewModelDefault<PhotosByType: PhotosByProtocol>: AlbumListViewM
         photosFetcher.getPermissionIfNecessary { granted in
             guard granted else { return }
             self.photosFetcher.fetchAssets()
-            
-            DispatchQueue.main.async {
-                self.allPhotos = self.photosFetcher.allPhotos
-                self.smartAlbums = self.photosFetcher.smartAlbums
-                self.userCollections = self.photosFetcher.userCollections
-                self.photosAlreadySorted = nil
-            }
         }
     }
     
