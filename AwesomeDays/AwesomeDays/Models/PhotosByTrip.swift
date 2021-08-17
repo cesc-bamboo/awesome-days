@@ -31,10 +31,10 @@ class PhotosByTrip: PhotosByProtocol {
     func isInThisTrip(photos: PhotosByDay) -> Bool {
         if photosByDays.isEmpty { return true }
         
-        guard let photosDate = Date.fromYearMonthDayString(stringDate: photos.date) else { return false }
+        guard let photosDate = photos.dateFormatted else { return false }
         
         for byDay in photosByDays {
-            if let dayDate = Date.fromYearMonthDayString(stringDate: byDay.date),
+            if let dayDate = byDay.dateFormatted,
                dayDate.isNearDay(date: photosDate, daysDistanceAllowed: 1) {
                 return true
             }

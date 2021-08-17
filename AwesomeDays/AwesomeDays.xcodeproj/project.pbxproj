@@ -17,6 +17,8 @@
 		CB35CA14268316CB00FF7543 /* HomeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB35CA122683156000FF7543 /* HomeTabView.swift */; };
 		CB35CA15268316CB00FF7543 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB35CA102683153200FF7543 /* SettingsView.swift */; };
 		CB35CA16268316CB00FF7543 /* HomeTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB35CA112683156000FF7543 /* HomeTabViewModel.swift */; };
+		CB9C520426CB9FDE00A886FA /* AwesomeDaysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9C520326CB9FDE00A886FA /* AwesomeDaysTests.swift */; };
+		CB9C520B26CB9FFB00A886FA /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = CB9C520A26CB9FFB00A886FA /* Nimble */; };
 		CB9E9E36268A804300F4805E /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9E9E35268A804300F4805E /* AppContext.swift */; };
 		CB9E9E39268B6E6100F4805E /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9E9E38268B6E6100F4805E /* PhotoDetailViewModel.swift */; };
 		CB9E9E3B268B6E6E00F4805E /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9E9E3A268B6E6E00F4805E /* PhotoDetailView.swift */; };
@@ -42,6 +44,16 @@
 		CBF44890268A0B55006C9ACF /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4488F268A0B55006C9ACF /* UserDefaultsExtension.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		CB9C520526CB9FDE00A886FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB35C9EE268235F700FF7543 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB35C9F5268235F800FF7543;
+			remoteInfo = AwesomeDays;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		CB1881D426832BAC00CE0DA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CB1881D6268335AC00CE0DA9 /* PhotosFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosFetcher.swift; sourceTree = "<group>"; };
@@ -55,6 +67,9 @@
 		CB35CA102683153200FF7543 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CB35CA112683156000FF7543 /* HomeTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewModel.swift; sourceTree = "<group>"; };
 		CB35CA122683156000FF7543 /* HomeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabView.swift; sourceTree = "<group>"; };
+		CB9C51FB26CB9EDB00A886FA /* libswiftWebKit.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftWebKit.tbd; path = usr/lib/swift/libswiftWebKit.tbd; sourceTree = SDKROOT; };
+		CB9C520126CB9FDE00A886FA /* AwesomeDaysTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AwesomeDaysTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB9C520326CB9FDE00A886FA /* AwesomeDaysTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeDaysTests.swift; sourceTree = "<group>"; };
 		CB9E9E35268A804300F4805E /* AppContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
 		CB9E9E38268B6E6100F4805E /* PhotoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewModel.swift; sourceTree = "<group>"; };
 		CB9E9E3A268B6E6E00F4805E /* PhotoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
@@ -88,6 +103,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CB9C51FE26CB9FDE00A886FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB9C520B26CB9FFB00A886FA /* Nimble in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -114,7 +137,9 @@
 			isa = PBXGroup;
 			children = (
 				CB35C9F8268235F800FF7543 /* AwesomeDays */,
+				CB9C520226CB9FDE00A886FA /* AwesomeDaysTests */,
 				CB35C9F7268235F800FF7543 /* Products */,
+				CB9C51FA26CB9EDB00A886FA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				CB35C9F6268235F800FF7543 /* AwesomeDays.app */,
+				CB9C520126CB9FDE00A886FA /* AwesomeDaysTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,6 +218,22 @@
 				CB35CA112683156000FF7543 /* HomeTabViewModel.swift */,
 			);
 			path = HomeTab;
+			sourceTree = "<group>";
+		};
+		CB9C51FA26CB9EDB00A886FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB9C51FB26CB9EDB00A886FA /* libswiftWebKit.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CB9C520226CB9FDE00A886FA /* AwesomeDaysTests */ = {
+			isa = PBXGroup;
+			children = (
+				CB9C520326CB9FDE00A886FA /* AwesomeDaysTests.swift */,
+			);
+			path = AwesomeDaysTests;
 			sourceTree = "<group>";
 		};
 		CB9E9E34268A802D00F4805E /* Shared */ = {
@@ -290,6 +332,27 @@
 			productReference = CB35C9F6268235F800FF7543 /* AwesomeDays.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CB9C520026CB9FDE00A886FA /* AwesomeDaysTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB9C520726CB9FDE00A886FA /* Build configuration list for PBXNativeTarget "AwesomeDaysTests" */;
+			buildPhases = (
+				CB9C51FD26CB9FDE00A886FA /* Sources */,
+				CB9C51FE26CB9FDE00A886FA /* Frameworks */,
+				CB9C51FF26CB9FDE00A886FA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB9C520626CB9FDE00A886FA /* PBXTargetDependency */,
+			);
+			name = AwesomeDaysTests;
+			packageProductDependencies = (
+				CB9C520A26CB9FFB00A886FA /* Nimble */,
+			);
+			productName = AwesomeDaysTests;
+			productReference = CB9C520126CB9FDE00A886FA /* AwesomeDaysTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -302,6 +365,10 @@
 				TargetAttributes = {
 					CB35C9F5268235F800FF7543 = {
 						CreatedOnToolsVersion = 13.0;
+					};
+					CB9C520026CB9FDE00A886FA = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = CB35C9F5268235F800FF7543;
 					};
 				};
 			};
@@ -316,12 +383,14 @@
 			mainGroup = CB35C9ED268235F700FF7543;
 			packageReferences = (
 				CBF448672686069C006C9ACF /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				CB7910F626CAD49F000FBE79 /* XCRemoteSwiftPackageReference "Nimble" */,
 			);
 			productRefGroup = CB35C9F7268235F800FF7543 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				CB35C9F5268235F800FF7543 /* AwesomeDays */,
+				CB9C520026CB9FDE00A886FA /* AwesomeDaysTests */,
 			);
 		};
 /* End PBXProject section */
@@ -333,6 +402,13 @@
 			files = (
 				CB35CA01268235FE00FF7543 /* Preview Assets.xcassets in Resources */,
 				CB35C9FE268235FE00FF7543 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB9C51FF26CB9FDE00A886FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +452,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CB9C51FD26CB9FDE00A886FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB9C520426CB9FDE00A886FA /* AwesomeDaysTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CB9C520626CB9FDE00A886FA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB35C9F5268235F800FF7543 /* AwesomeDays */;
+			targetProxy = CB9C520526CB9FDE00A886FA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CB35CA02268235FE00FF7543 /* Debug */ = {
@@ -520,6 +612,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cescdev.AwesomeDays;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -554,12 +650,62 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/swift",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cescdev.AwesomeDays;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CB9C520826CB9FDE00A886FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5ZKVP4LHLY;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cescdev.AwesomeDaysTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AwesomeDays.app/AwesomeDays";
+			};
+			name = Debug;
+		};
+		CB9C520926CB9FDE00A886FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5ZKVP4LHLY;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cescdev.AwesomeDaysTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AwesomeDays.app/AwesomeDays";
 			};
 			name = Release;
 		};
@@ -584,9 +730,26 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		CB9C520726CB9FDE00A886FA /* Build configuration list for PBXNativeTarget "AwesomeDaysTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB9C520826CB9FDE00A886FA /* Debug */,
+				CB9C520926CB9FDE00A886FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CB7910F626CAD49F000FBE79 /* XCRemoteSwiftPackageReference "Nimble" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Quick/Nimble.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		CBF448672686069C006C9ACF /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
@@ -598,6 +761,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CB9C520A26CB9FFB00A886FA /* Nimble */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB7910F626CAD49F000FBE79 /* XCRemoteSwiftPackageReference "Nimble" */;
+			productName = Nimble;
+		};
 		CBF448682686069C006C9ACF /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CBF448672686069C006C9ACF /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
